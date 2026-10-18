@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">رادار التحديثات</string>
+    <string name="channel_name">تذكيرات التحديث</string>
+    <string name="channel_desc">تذكير عبر الواي فاي حين تتأخر تطبيقات عن التحديث.</string>
+    <plurals name="notif_stale_title">
+        <item quantity="zero">لا تطبيقات متأخرة عن التحديث منذ %2$d+ يوم</item>
+        <item quantity="one">تطبيق واحد لم يُحدَّث منذ %2$d+ يوم</item>
+        <item quantity="two">تطبيقان لم يُحدَّثا منذ %2$d+ يوم</item>
+        <item quantity="few">%1$d تطبيقات لم تُحدَّث منذ %2$d+ يوم</item>
+        <item quantity="many">%1$d تطبيقًا لم يُحدَّث منذ %2$d+ يوم</item>
+        <item quantity="other">%1$d تطبيق لم يُحدَّث منذ %2$d+ يوم</item>
+    </plurals>
+    <plurals name="notif_updated_text">
+        <item quantity="zero">لم يُحدَّث أي تطبيق منذ آخر فحص.</item>
+        <item quantity="one">تطبيق واحد حُدِّث منذ آخر فحص.</item>
+        <item quantity="two">تطبيقان حُدِّثا منذ آخر فحص.</item>
+        <item quantity="few">%1$d تطبيقات حُدِّثت منذ آخر فحص.</item>
+        <item quantity="many">%1$d تطبيقًا حُدِّث منذ آخر فحص.</item>
+        <item quantity="other">%1$d تطبيق حُدِّث منذ آخر فحص.</item>
+    </plurals>
+    <string name="notif_review_text">اضغط لمراجعتها وفتح المتجر المناسب.</string>
+
+    <string name="store_play">متجر Play</string>
+    <string name="store_galaxy">متجر Galaxy</string>
+    <string name="store_amazon">متجر أمازون</string>
+    <string name="store_huawei">AppGallery</string>
+    <string name="store_fdroid">F-Droid</string>
+    <string name="store_other">متجر آخر</string>
+    <string name="store_sideloaded">ثُبِّت يدويًّا</string>
+    <string name="store_preinstalled">مثبَّت مسبقًا</string>
+
+    <string name="today">اليوم</string>
+    <plurals name="days_ago">
+        <item quantity="zero">اليوم</item>
+        <item quantity="one">منذ يوم</item>
+        <item quantity="two">منذ يومين</item>
+        <item quantity="few">منذ %1$d أيام</item>
+        <item quantity="many">منذ %1$d يومًا</item>
+        <item quantity="other">منذ %1$d يوم</item>
+    </plurals>
+    <string name="fresh">محدَّث</string>
+    <string name="aging">يتقادم</string>
+    <string name="stale">متأخر</string>
+    <string name="total">التطبيقات</string>
+    <string name="last_scan">آخر فحص %1$s</string>
+    <string name="refresh">افحص من جديد</string>
+    <string name="settings">الإعدادات</string>
+    <plurals name="review_stale">
+        <item quantity="zero">لا تطبيقات متأخرة</item>
+        <item quantity="one">راجع التطبيق المتأخر</item>
+        <item quantity="two">راجع التطبيقين المتأخرين</item>
+        <item quantity="few">راجع %1$d تطبيقات متأخرة</item>
+        <item quantity="many">راجع %1$d تطبيقًا متأخرًا</item>
+        <item quantity="other">راجع %1$d تطبيق متأخر</item>
+    </plurals>
+    <plurals name="stale_caption">
+        <item quantity="zero">تطبيق لم يُحدَّث منذ %1$d+ يوم</item>
+        <item quantity="one">تطبيق لم يُحدَّث منذ %1$d+ يوم</item>
+        <item quantity="two">تطبيقان لم يُحدَّثا منذ %1$d+ يوم</item>
+        <item quantity="few">تطبيقات لم تُحدَّث منذ %1$d+ يوم</item>
+        <item quantity="many">تطبيقًا لم يُحدَّث منذ %1$d+ يوم</item>
+        <item quantity="other">تطبيق لم يُحدَّث منذ %1$d+ يوم</item>
+    </plurals>
+    <string name="honesty">لا يسمح أندرويد لأي تطبيق بتحديث تطبيقات أخرى. يجد رادار التحديثات التطبيقات التي توقفت عن التحديث ويفتح المتجر الذي ثبّتها، فلا يبقى عليك إلا الضغط على «تحديث».</string>
+    <string name="tab_apps">التطبيقات</string>
+    <string name="tab_updates">حُدِّثت مؤخرًا</string>
+    <string name="tab_updates_count">حُدِّثت مؤخرًا · %1$d</string>
+    <string name="empty_none">تُعرض فقط التطبيقات المثبَّتة من متجر أو يدويًّا، ولم يُعثر على أي منها. التطبيقات المثبتة مسبقًا مخفية.</string>
+    <string name="empty_filter">لا يوجد تطبيق يطابق هذه الفلاتر.</string>
+    <string name="empty_feed">ستظهر هنا التحديثات المكتشفة بين فحص وآخر. الفحص الأول هو نقطة البداية.</string>
+    <string name="clear_feed">مسح</string>
+    <string name="search_hint">ابحث عن تطبيق</string>
+    <string name="sort">ترتيب</string>
+    <string name="sort_stalest">الأكثر تأخرًا أولًا</string>
+    <string name="sort_recent">المحدَّثة مؤخرًا أولًا</string>
+    <string name="sort_name">الاسم</string>
+    <string name="all">الكل</string>
+    <string name="only_stale">المتأخرة فقط</string>
+    <string name="updated_ago">حُدِّث %1$s</string>
+    <string name="open_store_for">افتح صفحة المتجر لـ %1$s</string>
+    <string name="version">الإصدار</string>
+    <string name="installed_from">ثُبِّت من</string>
+    <string name="last_updated">آخر تحديث</string>
+    <string name="first_installed">أول تثبيت</string>
+    <string name="sideload_hint">هذا التطبيق لم يُثبَّت من متجر معروف، فلن يتحدث وحده. راجع موقعه أو أداة مثل Obtainium.</string>
+    <string name="open_in">افتح في %1$s</string>
+    <string name="app_info">معلومات التطبيق</string>
+    <string name="open_app">افتح التطبيق</string>
+    <string name="ignore">تجاهل هذا التطبيق</string>
+    <string name="unignore">ألغِ التجاهل</string>
+
+    <string name="review_title">مراجعة التطبيقات المتأخرة</string>
+    <string name="back">رجوع</string>
+    <string name="review_progress">%1$d من %2$d</string>
+    <string name="review_done">انتهيت. روجِع %1$d تطبيق.</string>
+    <string name="back_to_radar">العودة إلى الرادار</string>
+    <string name="open_store_page">افتح صفحة المتجر</string>
+    <string name="skip">تخطَّ</string>
+    <string name="done_next">تم، التالي</string>
+    <string name="review_hint">اضغط «تحديث» في المتجر ثم عد إلى هنا، وسيعيد الرادار الفحص عند عودتك.</string>
+
+    <string name="thresholds">متى يُعدّ التطبيق متأخرًا؟</string>
+    <plurals name="aging_after">
+        <item quantity="zero">يتقادم بعد %1$d يوم</item>
+        <item quantity="one">يتقادم بعد يوم</item>
+        <item quantity="two">يتقادم بعد يومين</item>
+        <item quantity="few">يتقادم بعد %1$d أيام</item>
+        <item quantity="many">يتقادم بعد %1$d يومًا</item>
+        <item quantity="other">يتقادم بعد %1$d يوم</item>
+    </plurals>
+    <plurals name="stale_after">
+        <item quantity="zero">متأخر بعد %1$d يوم</item>
+        <item quantity="one">متأخر بعد يوم</item>
+        <item quantity="two">متأخر بعد يومين</item>
+        <item quantity="few">متأخر بعد %1$d أيام</item>
+        <item quantity="many">متأخر بعد %1$d يومًا</item>
+        <item quantity="other">متأخر بعد %1$d يوم</item>
+    </plurals>
+    <string name="reminders">التذكيرات</string>
+    <string name="reminders_on">ذكّرني عبر الواي فاي</string>
+    <string name="reminders_on_desc">فحص هادئ في الخلفية، على شبكة غير محدودة فقط.</string>
+    <string name="every">كم مرة</string>
+    <plurals name="every_days">
+        <item quantity="zero">كل %1$d يوم</item>
+        <item quantity="one">كل يوم</item>
+        <item quantity="two">كل يومين</item>
+        <item quantity="few">كل %1$d أيام</item>
+        <item quantity="many">كل %1$d يومًا</item>
+        <item quantity="other">كل %1$d يوم</item>
+    </plurals>
+    <string name="only_charging">أثناء الشحن فقط</string>
+    <string name="only_charging_desc">انتظر حتى يُوصَل الهاتف بالشاحن.</string>
+    <string name="apps_shown">التطبيقات المعروضة</string>
+    <string name="include_system">أظهر التطبيقات المثبتة مسبقًا</string>
+    <string name="include_system_desc">اعرض تطبيقات النظام التي لها أيقونة، حتى لو لم تُحدَّث قط.</string>
+    <plurals name="ignored_count">
+        <item quantity="zero">لا تطبيقات متجاهَلة.</item>
+        <item quantity="one">تطبيق واحد متجاهَل. افتحه واضغط «ألغِ التجاهل» لإرجاعه.</item>
+        <item quantity="two">تطبيقان متجاهَلان. افتح أحدهما واضغط «ألغِ التجاهل».</item>
+        <item quantity="few">%1$d تطبيقات متجاهَلة. افتح أحدها واضغط «ألغِ التجاهل».</item>
+        <item quantity="many">%1$d تطبيقًا متجاهَلًا. افتح أحدها واضغط «ألغِ التجاهل».</item>
+        <item quantity="other">%1$d تطبيق متجاهَل. افتح أحدها واضغط «ألغِ التجاهل».</item>
+    </plurals>
+    <string name="stores">المتاجر</string>
+    <string name="stores_desc">افتح متجرًا لاستعمال صفحة التحديثات الخاصة به.</string>
+    <string name="privacy">الخصوصية</string>
+    <string name="privacy_desc">ليس لرادار التحديثات إذن الوصول إلى الإنترنت، وقائمة تطبيقاتك لا تغادر الهاتف أبدًا.</string>
+    <string name="version_line">الإصدار %1$s · مفتوح المصدر على GitHub (Bosaj/android-update-checker)</string>
+
+    <string name="onboard_tagline">لا يفوتك أي تحديث بعد اليوم.</string>
+    <string name="onboard_1_t">اعرف ما توقف عن التحديث</string>
+    <string name="onboard_1_d">كل تطبيق مع تاريخ آخر تحديث له، من متجر Play أو Galaxy أو المثبَّت يدويًّا.</string>
+    <string name="onboard_2_t">تذكير عبر الواي فاي</string>
+    <string name="onboard_2_d">فحص في الخلفية على الواي فاي يخبرك حين تتأخر تطبيقات عن التحديث لأسابيع.</string>
+    <string name="onboard_3_t">ضغطة واحدة إلى المتجر الصحيح</string>
+    <string name="onboard_3_d">لا يسمح أندرويد لتطبيق بتحديث تطبيقات أخرى، لذلك يفتح الرادار صفحة المتجر بالضبط، وأنت تضغط «تحديث».</string>
+    <string name="onboard_4_t">خصوصية من الأساس</string>
+    <string name="onboard_4_d">لا إذن إنترنت، ولا حساب، ولا تتبّع.</string>
+    <string name="onboard_start">ابدأ الفحص</string>
+</resources>
