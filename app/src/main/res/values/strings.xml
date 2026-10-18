@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Update Radar</string>
+    <string name="channel_name">Update reminders</string>
+    <string name="channel_desc">A reminder on Wi-Fi when apps have not updated for a while.</string>
+    <plurals name="notif_stale_title">
+        <item quantity="one">%1$d app has not updated in %2$d+ days</item>
+        <item quantity="other">%1$d apps have not updated in %2$d+ days</item>
+    </plurals>
+    <plurals name="notif_updated_text">
+        <item quantity="one">%1$d app updated since the last check.</item>
+        <item quantity="other">%1$d apps updated since the last check.</item>
+    </plurals>
+    <string name="notif_review_text">Tap to review them and open the right store.</string>
+
+    <string name="store_play">Play Store</string>
+    <string name="store_galaxy">Galaxy Store</string>
+    <string name="store_amazon">Amazon Appstore</string>
+    <string name="store_huawei">AppGallery</string>
+    <string name="store_fdroid">F-Droid</string>
+    <string name="store_other">Other store</string>
+    <string name="store_sideloaded">Installed by hand</string>
+    <string name="store_preinstalled">Preinstalled</string>
+
+    <string name="today">today</string>
+    <plurals name="days_ago">
+        <item quantity="one">%1$d day ago</item>
+        <item quantity="other">%1$d days ago</item>
+    </plurals>
+    <string name="fresh">Fresh</string>
+    <string name="aging">Aging</string>
+    <string name="stale">Stale</string>
+    <string name="total">Apps</string>
+    <string name="last_scan">Scanned at %1$s</string>
+    <string name="refresh">Scan again</string>
+    <string name="settings">Settings</string>
+    <plurals name="review_stale">
+        <item quantity="one">Review %1$d stale app</item>
+        <item quantity="other">Review %1$d stale apps</item>
+    </plurals>
+    <plurals name="stale_caption">
+        <item quantity="one">app not updated for %1$d+ days</item>
+        <item quantity="other">apps not updated for %1$d+ days</item>
+    </plurals>
+    <string name="honesty">Android does not let any app update other apps. Update Radar finds the ones that have gone quiet and opens the store that installed them, so you only tap Update.</string>
+    <string name="tab_apps">Apps</string>
+    <string name="tab_updates">Recently updated</string>
+    <string name="tab_updates_count">Recently updated · %1$d</string>
+    <string name="empty_none">Only apps installed from a store or by hand are shown, and none were found. Preinstalled apps are hidden.</string>
+    <string name="empty_filter">No app matches these filters.</string>
+    <string name="empty_feed">Updates detected between scans will appear here. The first scan is the starting point.</string>
+    <string name="clear_feed">Clear</string>
+    <string name="search_hint">Search apps</string>
+    <string name="sort">Sort</string>
+    <string name="sort_stalest">Stalest first</string>
+    <string name="sort_recent">Recently updated first</string>
+    <string name="sort_name">Name</string>
+    <string name="all">All</string>
+    <string name="only_stale">Only stale</string>
+    <string name="updated_ago">Updated %1$s</string>
+    <string name="open_store_for">Open the store page of %1$s</string>
+    <string name="version">Version</string>
+    <string name="installed_from">Installed from</string>
+    <string name="last_updated">Last updated</string>
+    <string name="first_installed">First installed</string>
+    <string name="sideload_hint">This app was not installed from a known store, so it will not update by itself. Check its website or a tool like Obtainium.</string>
+    <string name="open_in">Open in %1$s</string>
+    <string name="app_info">App info</string>
+    <string name="open_app">Open app</string>
+    <string name="ignore">Ignore this app</string>
+    <string name="unignore">Stop ignoring</string>
+
+    <string name="review_title">Review stale apps</string>
+    <string name="back">Back</string>
+    <string name="review_progress">%1$d of %2$d</string>
+    <string name="review_done">All done. %1$d apps reviewed.</string>
+    <string name="back_to_radar">Back to the radar</string>
+    <string name="open_store_page">Open store page</string>
+    <string name="skip">Skip</string>
+    <string name="done_next">Done, next</string>
+    <string name="review_hint">Tap Update in the store, then come back here. Update Radar scans again when you return.</string>
+
+    <string name="thresholds">When is an app stale?</string>
+    <plurals name="aging_after">
+        <item quantity="one">Aging after %1$d day</item>
+        <item quantity="other">Aging after %1$d days</item>
+    </plurals>
+    <plurals name="stale_after">
+        <item quantity="one">Stale after %1$d day</item>
+        <item quantity="other">Stale after %1$d days</item>
+    </plurals>
+    <string name="reminders">Reminders</string>
+    <string name="reminders_on">Remind me on Wi-Fi</string>
+    <string name="reminders_on_desc">A quiet check in the background, only on an unmetered network.</string>
+    <string name="every">How often</string>
+    <plurals name="every_days">
+        <item quantity="one">Every day</item>
+        <item quantity="other">Every %1$d days</item>
+    </plurals>
+    <string name="only_charging">Only while charging</string>
+    <string name="only_charging_desc">Wait until the phone is plugged in.</string>
+    <string name="apps_shown">Apps shown</string>
+    <string name="include_system">Include preinstalled apps</string>
+    <string name="include_system_desc">Show system apps that have a launcher icon, even if they were never updated.</string>
+    <plurals name="ignored_count">
+        <item quantity="one">%1$d app ignored. Open it and tap Stop ignoring to bring it back.</item>
+        <item quantity="other">%1$d apps ignored. Open one and tap Stop ignoring to bring it back.</item>
+    </plurals>
+    <string name="stores">Stores</string>
+    <string name="stores_desc">Open a store to use its own Updates page.</string>
+    <string name="privacy">Privacy</string>
+    <string name="privacy_desc">Update Radar has no internet permission. The list of your apps never leaves the phone.</string>
+    <string name="version_line">Version %1$s · open source on GitHub (Bosaj/android-update-checker)</string>
+
+    <string name="onboard_tagline">Never miss an app update again.</string>
+    <string name="onboard_1_t">See what has gone quiet</string>
+    <string name="onboard_1_d">Every app with the date of its last update, from Play Store, Galaxy Store or installed by hand.</string>
+    <string name="onboard_2_t">A reminder on Wi-Fi</string>
+    <string name="onboard_2_d">A background check on Wi-Fi tells you when apps have not updated for weeks.</string>
+    <string name="onboard_3_t">One tap to the right store</string>
+    <string name="onboard_3_d">Android does not allow apps to update other apps, so Update Radar opens the exact store page. You tap Update.</string>
+    <string name="onboard_4_t">Private by design</string>
+    <string name="onboard_4_d">No internet permission, no account, no tracking.</string>
+    <string name="onboard_start">Start scanning</string>
+</resources>
