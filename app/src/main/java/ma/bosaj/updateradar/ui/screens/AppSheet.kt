@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.OpenInNew
 import androidx.compose.material.icons.rounded.Apps
@@ -56,7 +58,8 @@ fun AppSheet(app: InstalledApp, s: RadarSettings, galaxyInstalled: Boolean, vm: 
     val factory = stringResource(R.string.factory_date)
     // Open fully: the half-height state hides the action buttons behind the navigation bar.
     ModalBottomSheet(onDismissRequest = { vm.select(null) }, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)) {
-        Column(Modifier.fillMaxWidth().padding(horizontal = 24.dp).navigationBarsPadding()) {
+        // Scrolls so the actions stay reachable when the sheet is taller than the screen (landscape).
+        Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 24.dp).navigationBarsPadding()) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 AppIcon(app.packageName, size = 56.dp, loader = vm.repo.scanner::icon)
                 Spacer(Modifier.width(16.dp))

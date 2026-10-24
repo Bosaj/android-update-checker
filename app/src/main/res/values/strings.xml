@@ -43,6 +43,10 @@
         <item quantity="other">apps not updated for %1$d+ days</item>
     </plurals>
     <string name="honesty">Android does not let any app update other apps. Update Radar finds the ones that have gone quiet and opens the store that installed them, so you only tap Update.</string>
+    <string name="update_all_play">Update all in Play Store</string>
+    <string name="update_all_galaxy">Galaxy Store updates</string>
+    <string name="update_all_hint">Opens Play Store on its Updates page. Tap “Update all” there; the store checks for new versions when the page opens.</string>
+    <string name="update_all_hint_galaxy">Play Store opens on its Updates page: tap “Update all”. Galaxy Store opens on its home page: Menu › Updates › Update all.</string>
     <string name="tab_apps">Apps</string>
     <string name="tab_updates">Recently updated</string>
     <string name="tab_updates_count">Recently updated · %1$d</string>

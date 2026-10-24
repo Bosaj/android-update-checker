@@ -4,6 +4,13 @@ All notable changes to this project are documented here. Format: [Keep a Changel
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-24
+### Added
+- **Update all in Play Store**: a button on the home screen opens Play Store's "Manage apps & device" Updates page, where its own "Update all" button updates every app at once, so you do not tap 200 store pages one by one. Opening the page also makes Play Store check for new versions. With Galaxy Store installed, a second button opens Galaxy Store (it has no public link to its Updates page: Menu › Updates › Update all).
+
+### Fixed
+- Landscape: the review screen and the app detail sheet scroll, so their buttons are no longer cut off on short screens (found on a Galaxy S23+).
+
 ## [1.0.0] - 2026-10-24
 ### Added
 - Update Radar app (Kotlin, Jetpack Compose, Material 3): radar of installed apps by days since their last update, fresh / aging / stale thresholds, filters, search and sorting.

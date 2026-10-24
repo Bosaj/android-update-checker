@@ -63,6 +63,10 @@
         <item quantity="other">تطبيق لم يُحدَّث منذ %1$d+ يوم</item>
     </plurals>
     <string name="honesty">لا يسمح أندرويد لأي تطبيق بتحديث تطبيقات أخرى. يجد رادار التحديثات التطبيقات التي توقفت عن التحديث ويفتح المتجر الذي ثبّتها، فلا يبقى عليك إلا الضغط على «تحديث».</string>
+    <string name="update_all_play">تحديث الكل في متجر Play</string>
+    <string name="update_all_galaxy">تحديثات متجر Galaxy</string>
+    <string name="update_all_hint">يفتح متجر Play على صفحة التحديثات. اضغط «تحديث الكل» هناك؛ يبحث المتجر عن الإصدارات الجديدة عند فتح الصفحة.</string>
+    <string name="update_all_hint_galaxy">يُفتح متجر Play على صفحة التحديثات: اضغط «تحديث الكل». ويُفتح متجر Galaxy على صفحته الرئيسية: القائمة › التحديثات › تحديث الكل.</string>
     <string name="tab_apps">التطبيقات</string>
     <string name="tab_updates">حُدِّثت مؤخرًا</string>
     <string name="tab_updates_count">حُدِّثت مؤخرًا (%1$d)</string>
