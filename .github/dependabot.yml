@@ -13,6 +13,17 @@ updates:
         patterns: ["androidx.*"]
       kotlin-and-agp:
         patterns: ["org.jetbrains.kotlin*", "com.android.*"]
+    # AGP 9, Gradle 9, compileSdk 37 and the androidx versions that need it only work together.
+    # They are one planned migration (#34); until then only patch updates come in for these.
+    ignore:
+      - dependency-name: "com.android.*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "gradle-wrapper"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "org.jetbrains.kotlin*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      - dependency-name: "androidx.*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
