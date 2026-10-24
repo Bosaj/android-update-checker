@@ -27,6 +27,7 @@ import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.Update
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
@@ -38,6 +39,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
@@ -162,7 +164,7 @@ fun HomeScreen(vm: RadarViewModel, ui: UiState, s: RadarSettings) {
                     Stat(summary.stale, stringResource(R.string.stale), radar.stale, Modifier.clickable { vm.onlyStale(!ui.filter.onlyStale) })
                     Stat(summary.total, stringResource(R.string.total), MaterialTheme.colorScheme.onSurface)
                 }
-                HonestyCard()
+                HonestyCard(ui.galaxyInstalled)
                 TabRow(selectedTabIndex = ui.tab.ordinal, containerColor = MaterialTheme.colorScheme.background) {
                     Tab(ui.tab == RadarTab.APPS, onClick = { vm.tab(RadarTab.APPS) }, text = { Text(stringResource(R.string.tab_apps)) })
                     Tab(ui.tab == RadarTab.UPDATES, onClick = { vm.tab(RadarTab.UPDATES) }, text = {
@@ -199,17 +201,39 @@ fun HomeScreen(vm: RadarViewModel, ui: UiState, s: RadarSettings) {
     }
 }
 
+/** Explains why the app cannot update others, and offers each store's "Update all" page instead of 200 single taps. */
 @Composable
-private fun HonestyCard() {
+private fun HonestyCard(galaxyInstalled: Boolean) {
+    val context = LocalContext.current
     Card(
         Modifier.fillMaxWidth().padding(16.dp),
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
     ) {
-        Row(Modifier.padding(16.dp), verticalAlignment = Alignment.Top) {
-            Icon(Icons.Rounded.Info, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
-            Spacer(Modifier.width(12.dp))
-            Text(stringResource(R.string.honesty), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Column(Modifier.padding(16.dp)) {
+            Row(verticalAlignment = Alignment.Top) {
+                Icon(Icons.Rounded.Info, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
+                Spacer(Modifier.width(12.dp))
+                Text(stringResource(R.string.honesty), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            Spacer(Modifier.height(14.dp))
+            Button(onClick = { StoreLinks.openUpdatesPage(context, Store.PLAY) }, modifier = Modifier.fillMaxWidth().height(52.dp)) {
+                Icon(Icons.Rounded.Update, null, modifier = Modifier.size(20.dp))
+                Spacer(Modifier.width(8.dp))
+                Text(stringResource(R.string.update_all_play), fontWeight = FontWeight.Bold)
+            }
+            if (galaxyInstalled) {
+                Spacer(Modifier.height(8.dp))
+                OutlinedButton(onClick = { StoreLinks.openUpdatesPage(context, Store.GALAXY) }, modifier = Modifier.fillMaxWidth().height(48.dp)) {
+                    Text(stringResource(R.string.update_all_galaxy))
+                }
+            }
+            Text(
+                stringResource(if (galaxyInstalled) R.string.update_all_hint_galaxy else R.string.update_all_hint),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 10.dp),
+            )
         }
     }
 }

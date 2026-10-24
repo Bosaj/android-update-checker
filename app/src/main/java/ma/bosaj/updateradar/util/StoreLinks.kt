@@ -46,6 +46,20 @@ object StoreLinks {
     fun openStorePage(context: Context, pkg: String, store: Store, galaxyInstalled: Boolean): Boolean =
         launchFirst(context, pageIntents(pkg, targetStore(store, galaxyInstalled)))
 
+    /**
+     * Opens the page that lists every pending update, where the store's own "Update all" button is.
+     * Opening it also makes the store check for new versions. Play Store has an intent for this page;
+     * Galaxy Store has no public link to it (only ProductDetail, SellerDetail, CategoryList, MainPage,
+     * ProductSetList and SearchResult), so it opens on its home page.
+     */
+    fun openUpdatesPage(context: Context, store: Store): Boolean = when (store) {
+        Store.PLAY -> launchFirst(
+            context,
+            listOf(Intent("com.google.android.finsky.VIEW_MY_DOWNLOADS").setPackage(Store.PLAY.packageName).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)),
+        ) || openStoreHome(context, store)
+        else -> openStoreHome(context, store)
+    }
+
     /** Opens a store's own app so the user can tap its Updates tab. */
     fun openStoreHome(context: Context, store: Store): Boolean {
         val pkg = store.packageName ?: return false

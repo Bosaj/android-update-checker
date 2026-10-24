@@ -48,6 +48,10 @@
         <item quantity="other">applis sans mise à jour depuis %1$d+ jours</item>
     </plurals>
     <string name="honesty">Android ne permet à aucune appli de mettre à jour les autres. Update Radar repère celles qui ne bougent plus et ouvre le store qui les a installées : il ne vous reste qu’à toucher Mettre à jour.</string>
+    <string name="update_all_play">Tout mettre à jour dans Play Store</string>
+    <string name="update_all_galaxy">Mises à jour Galaxy Store</string>
+    <string name="update_all_hint">Ouvre Play Store sur sa page des mises à jour. Touchez « Tout mettre à jour » ; le store recherche les nouvelles versions à l’ouverture.</string>
+    <string name="update_all_hint_galaxy">Play Store s’ouvre sur ses mises à jour : touchez « Tout mettre à jour ». Galaxy Store s’ouvre sur l’accueil : Menu › Mises à jour › Tout mettre à jour.</string>
     <string name="tab_apps">Applis</string>
     <string name="tab_updates">Mises à jour récentes</string>
     <string name="tab_updates_count">Mises à jour récentes · %1$d</string>
