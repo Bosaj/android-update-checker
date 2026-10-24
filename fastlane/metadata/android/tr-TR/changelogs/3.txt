@@ -1,0 +1,6 @@
+1.1.0
+• Play Store’da tek dokunuşla tümünü güncelle
+• Uygulama dilini Ayarlar’dan seçin: 8 dil, sağdan sola Arapça
+• Android 16’ya hazır; yatay modda ve tabletlerde çalışır
+• Gizlilik politikası ve lisanslar Ayarlar › Hakkında’da
+• Daha az izin, daha güçlü güvenlik

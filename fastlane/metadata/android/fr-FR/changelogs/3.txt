@@ -1,0 +1,6 @@
+1.1.0
+• Tout mettre à jour dans le Play Store d’un geste
+• Langue de l’appli au choix dans les réglages : 8 langues, arabe de droite à gauche
+• Prête pour Android 16 ; fonctionne en paysage et sur tablette
+• Politique de confidentialité et licences dans Réglages › À propos
+• Moins d’autorisations, sécurité renforcée

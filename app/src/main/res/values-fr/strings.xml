@@ -132,6 +132,15 @@
     <string name="privacy">Confidentialité</string>
     <string name="privacy_desc">Update Radar n’a pas la permission Internet. La liste de vos applis ne quitte jamais le téléphone.</string>
     <string name="version_line">Version %1$s · open source sur GitHub (Bosaj/android-update-checker)</string>
+    <string name="language">Langue</string>
+    <string name="language_system">Langue du téléphone</string>
+    <string name="change">Modifier</string>
+    <string name="close">Fermer</string>
+    <string name="about">À propos</string>
+    <string name="privacy_policy">Politique de confidentialité</string>
+    <string name="licences">Licences open source</string>
+    <string name="licences_intro">Update Radar est un logiciel libre sous licence MIT, construit avec ces bibliothèques open source :</string>
+    <string name="source_code">Code source sur GitHub</string>
 
     <string name="onboard_tagline">Ne ratez plus aucune mise à jour.</string>
     <string name="onboard_1_t">Voir ce qui ne bouge plus</string>
@@ -143,4 +152,33 @@
     <string name="onboard_4_t">Privé par conception</string>
     <string name="onboard_4_d">Pas de permission Internet, pas de compte, pas de pistage.</string>
     <string name="onboard_start">Lancer l’analyse</string>
+    <plurals name="check_all">
+        <item quantity="one">Vérifier %1$d appli dans son store</item>
+        <item quantity="many">Vérifier les %1$d dans leur store</item>
+        <item quantity="other">Vérifier les %1$d dans leur store</item>
+    </plurals>
+    <plurals name="review_updated">
+        <item quantity="one">Dont %1$d mise à jour.</item>
+        <item quantity="many">Dont %1$d mises à jour.</item>
+        <item quantity="other">Dont %1$d mises à jour.</item>
+    </plurals>
+    <string name="autopilot_start">Tout vérifier automatiquement</string>
+    <string name="autopilot_on">Vérification automatique</string>
+    <string name="autopilot_next">Suivante : %1$s</string>
+    <string name="autopilot_hint">À chaque retour, la page du store suivante s’ouvre toute seule. Touchez Mettre à jour quand le store le propose.</string>
+    <string name="stop">Arrêter</string>
+    <string name="update_all_note">« Tout mettre à jour » ne met à jour que les applis qui ont une nouvelle version. Une appli sans mise à jour depuis des semaines est souvent déjà à sa dernière version : « Tout vérifier » ouvre chacune dans son store.</string>
+    <string name="used_ago">utilisée %1$s</string>
+    <string name="last_used">Dernière utilisation</string>
+    <string name="no_use">Aucune utilisation enregistrée</string>
+    <string name="usage_title">Dates de dernière utilisation</string>
+    <string name="usage_desc">Facultatif. Indique quand vous avez ouvert chaque appli pour la dernière fois, pour vous concentrer sur les vieilles applis que vous utilisez vraiment. Nécessite l’accès aux données d’utilisation d’Android ; les dates restent sur votre téléphone.</string>
+    <string name="usage_allow">Autoriser l’accès</string>
+    <string name="usage_on">L’accès aux données d’utilisation est activé. Vous pouvez le couper à tout moment dans les réglages d’Android.</string>
+    <string name="open_settings">Ouvrir les réglages</string>
+    <string name="usage_disclosure_title">Autoriser l’accès aux données d’utilisation ?</string>
+    <string name="usage_disclosure">Update Radar lira dans Android la date à laquelle chaque appli a été ouverte pour la dernière fois. Il s’en sert uniquement pour afficher « Dernière utilisation » et trier vos applis. Rien n’est envoyé : l’appli n’a pas l’autorisation Internet. Vous pouvez couper cet accès à tout moment dans les réglages d’Android.</string>
+    <string name="continue_btn">Continuer</string>
+    <string name="not_now">Plus tard</string>
+    <string name="sort_used">Utilisées récemment d’abord</string>
 </resources>

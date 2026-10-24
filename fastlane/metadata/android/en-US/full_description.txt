@@ -1,0 +1,26 @@
+Some apps quietly stop updating: auto-update is off, apps are split between Play Store and Galaxy Store, or the update notice never comes. Update Radar shows you which ones, and takes you straight to the place where you update them.
+
+★ A radar of your apps
+Every app with an icon, the store that installed it (Play Store, Galaxy Store, AppGallery, Amazon, F-Droid, other stores or installed by hand) and the days since its last update. Apps drift to the outer ring as they age.
+
+★ Update all in one tap
+One button opens Play Store's Updates page, where its own "Update all" button updates everything at once. Opening it also makes Play Store check for new versions. No more 200 store pages one by one.
+
+★ Fresh, aging, stale
+You choose the thresholds (14 and 45 days by default). Filter by store or "only stale", search, and sort by stalest, newest or name.
+
+★ Quiet reminders on Wi-Fi
+A background check every 1, 3 or 7 days, only on Wi-Fi and optionally only while charging.
+
+★ Review flow
+Walk through the stale apps one by one: open the store page, tap Update, come back, next. The radar scans again when you return.
+
+★ Private by design
+No internet permission, no account, no ads, no analytics. The list of your apps never leaves your phone.
+
+★ 8 languages
+English, Français, العربية (right-to-left), Español, Deutsch, Italiano, Português (Brasil), Türkçe. Change the language in the app, at any time.
+
+What it cannot do, honestly: Android does not let one app update other apps. Update Radar finds and routes; the store does the update when you tap its button.
+
+Open source (MIT): github.com/Bosaj/android-update-checker

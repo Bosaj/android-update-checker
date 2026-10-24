@@ -161,6 +161,15 @@
     <string name="privacy">الخصوصية</string>
     <string name="privacy_desc">ليس لرادار التحديثات إذن الوصول إلى الإنترنت، وقائمة تطبيقاتك لا تغادر الهاتف أبدًا.</string>
     <string name="version_line">الإصدار %1$s · مفتوح المصدر على GitHub (Bosaj/android-update-checker)</string>
+    <string name="language">اللغة</string>
+    <string name="language_system">لغة الهاتف</string>
+    <string name="change">تغيير</string>
+    <string name="close">إغلاق</string>
+    <string name="about">حول التطبيق</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="licences">تراخيص المصادر المفتوحة</string>
+    <string name="licences_intro">رادار التحديثات برنامج حر بترخيص MIT، مبني بهذه المكتبات المفتوحة المصدر:</string>
+    <string name="source_code">الشيفرة المصدرية على GitHub</string>
 
     <string name="onboard_tagline">لا يفوتك أي تحديث بعد اليوم.</string>
     <string name="onboard_1_t">اعرف ما توقف عن التحديث</string>
@@ -172,4 +181,39 @@
     <string name="onboard_4_t">خصوصية من الأساس</string>
     <string name="onboard_4_d">لا إذن إنترنت، ولا حساب، ولا تتبّع.</string>
     <string name="onboard_start">ابدأ الفحص</string>
+    <plurals name="check_all">
+        <item quantity="zero">افحص التطبيقات في متاجرها</item>
+        <item quantity="one">افحص تطبيقًا واحدًا في متجره</item>
+        <item quantity="two">افحص التطبيقين في متجرهما</item>
+        <item quantity="few">افحص %1$d تطبيقات في متاجرها</item>
+        <item quantity="many">افحص %1$d تطبيقًا في متاجرها</item>
+        <item quantity="other">افحص %1$d تطبيق في متاجرها</item>
+    </plurals>
+    <plurals name="review_updated">
+        <item quantity="zero">لم يُحدَّث أي منها.</item>
+        <item quantity="one">حُدِّث تطبيق واحد منها.</item>
+        <item quantity="two">حُدِّث تطبيقان منها.</item>
+        <item quantity="few">حُدِّثت %1$d تطبيقات منها.</item>
+        <item quantity="many">حُدِّث %1$d تطبيقًا منها.</item>
+        <item quantity="other">حُدِّث %1$d تطبيق منها.</item>
+    </plurals>
+    <string name="autopilot_start">افحصها كلها تلقائيًا</string>
+    <string name="autopilot_on">فحص تلقائي</string>
+    <string name="autopilot_next">التالي: %1$s</string>
+    <string name="autopilot_hint">كلما عدت، تُفتح صفحة المتجر التالية وحدها. اضغط «تحديث» عندما يظهر في المتجر.</string>
+    <string name="stop">إيقاف</string>
+    <string name="update_all_note">«تحديث الكل» لا يحدّث إلا التطبيقات التي لها إصدار أحدث. التطبيق الذي لم يُحدَّث منذ أسابيع غالبًا ما يكون على آخر إصدار: استخدم «افحص الكل» لرؤية كل تطبيق في متجره.</string>
+    <string name="used_ago">استُخدم %1$s</string>
+    <string name="last_used">آخر استخدام</string>
+    <string name="no_use">لا يوجد استخدام مسجّل</string>
+    <string name="usage_title">تواريخ آخر استخدام</string>
+    <string name="usage_desc">اختياري. يعرض متى فتحت كل تطبيق آخر مرة، لتركّز على التطبيقات القديمة التي تستخدمها فعلًا. يحتاج إلى «الوصول إلى بيانات الاستخدام» في أندرويد، وتبقى التواريخ على هاتفك.</string>
+    <string name="usage_allow">السماح بالوصول</string>
+    <string name="usage_on">الوصول إلى بيانات الاستخدام مفعّل. يمكنك إيقافه في إعدادات أندرويد في أي وقت.</string>
+    <string name="open_settings">فتح الإعدادات</string>
+    <string name="usage_disclosure_title">السماح بالوصول إلى بيانات الاستخدام؟</string>
+    <string name="usage_disclosure">سيقرأ رادار التحديثات من أندرويد متى فُتح كل تطبيق آخر مرة، ولا يستعمل ذلك إلا لعرض «آخر استخدام» وترتيب تطبيقاتك. لا يُرسَل أي شيء: ليس للتطبيق إذن إنترنت. يمكنك إيقاف هذا الوصول في أي وقت من إعدادات أندرويد.</string>
+    <string name="continue_btn">متابعة</string>
+    <string name="not_now">ليس الآن</string>
+    <string name="sort_used">المستخدمة مؤخرًا أولًا</string>
 </resources>

@@ -6,6 +6,20 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <!--
+      Optional "last used" dates. This is special access the user grants in Android settings after an
+      in-app disclosure; it is never granted at install. The dates stay on the phone.
+    -->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!--
+      WorkManager merges a foreground-service permission and service in. Reminders never run in the
+      foreground, so both are removed: fewer permissions, and no foreground-service declaration on Google Play.
+    -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" tools:node="remove" />
+
+    <!--
       Package visibility (Android 11+): we only ask to see apps that have a launcher icon,
       plus the stores we link to. No QUERY_ALL_PACKAGES.
     -->
@@ -36,8 +50,9 @@
         android:label="@string/app_name"
         android:localeConfig="@xml/locales_config"
         android:supportsRtl="true"
+        android:enableOnBackInvokedCallback="true"
         android:theme="@style/Theme.UpdateRadar.Splash"
-        tools:targetApi="34">
+        tools:targetApi="36">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -47,5 +62,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name="androidx.work.impl.foreground.SystemForegroundService"
+            tools:node="remove" />
+
+        <!-- Keeps the language chosen in Settings on Android 8–12 (Android 13+ stores it in the system). -->
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
     </application>
 </manifest>

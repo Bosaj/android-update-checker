@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data-extraction-rules>
-    <cloud-backup>
+    <!-- Settings only (thresholds, reminder choice, ignored apps), and only when the backup is end-to-end encrypted. -->
+    <cloud-backup disableIfNoEncryptionCapabilities="true">
         <include domain="file" path="datastore/" />
     </cloud-backup>
     <device-transfer>
