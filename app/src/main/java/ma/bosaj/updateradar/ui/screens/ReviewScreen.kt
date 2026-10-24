@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.OpenInNew
@@ -36,17 +38,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import ma.bosaj.updateradar.R
-import ma.bosaj.updateradar.data.Radar
 import ma.bosaj.updateradar.ui.RadarViewModel
 import ma.bosaj.updateradar.ui.Screen
 import ma.bosaj.updateradar.ui.UiState
 import ma.bosaj.updateradar.ui.components.AppIcon
 import ma.bosaj.updateradar.ui.components.StoreChip
-import ma.bosaj.updateradar.ui.components.daysAgo
+import ma.bosaj.updateradar.ui.components.updatedLabel
 import ma.bosaj.updateradar.ui.theme.LocalRadar
 import ma.bosaj.updateradar.util.StoreLinks
 
@@ -69,7 +71,8 @@ fun ReviewScreen(vm: RadarViewModel, ui: UiState) {
         },
         containerColor = MaterialTheme.colorScheme.background,
     ) { pad ->
-        Column(Modifier.fillMaxSize().padding(pad).padding(20.dp)) {
+        // Scrolls so the buttons stay reachable when the screen is short (a phone in landscape).
+        Column(Modifier.fillMaxSize().padding(pad).verticalScroll(rememberScrollState()).padding(20.dp)) {
             LinearProgressIndicator(
                 progress = { if (total == 0) 1f else ui.reviewIndex.toFloat() / total },
                 modifier = Modifier.fillMaxWidth(),
@@ -90,7 +93,7 @@ fun ReviewScreen(vm: RadarViewModel, ui: UiState) {
                     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(Icons.Rounded.CheckCircle, null, tint = LocalRadar.current.fresh, modifier = Modifier.height(72.dp).width(72.dp))
                         Spacer(Modifier.height(16.dp))
-                        Text(stringResource(R.string.review_done, ui.reviewDone.size), style = MaterialTheme.typography.titleLarge, textAlign = TextAlign.Center)
+                        Text(pluralStringResource(R.plurals.review_done, ui.reviewDone.size, ui.reviewDone.size), style = MaterialTheme.typography.titleLarge, textAlign = TextAlign.Center)
                         Spacer(Modifier.height(24.dp))
                         Button(onClick = { vm.go(Screen.HOME); vm.refresh() }) { Text(stringResource(R.string.back_to_radar)) }
                     }
@@ -106,7 +109,7 @@ fun ReviewScreen(vm: RadarViewModel, ui: UiState) {
                             Text(app.label, style = MaterialTheme.typography.headlineSmall, textAlign = TextAlign.Center)
                             Spacer(Modifier.height(6.dp))
                             Text(
-                                stringResource(R.string.updated_ago, daysAgo(Radar.daysSince(app.lastUpdate, System.currentTimeMillis()))),
+                                updatedLabel(app.lastUpdate, System.currentTimeMillis()),
                                 color = LocalRadar.current.stale,
                             )
                             Spacer(Modifier.height(8.dp))

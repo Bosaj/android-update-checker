@@ -2,12 +2,13 @@
 
 > See which Android apps have gone stale, get a reminder on Wi-Fi, and jump straight to the right store page to update — Play Store and Galaxy Store.
 
-**Status:** v1.0.0 · **Download:** [latest APK](https://github.com/Bosaj/android-update-checker/releases/latest) · **Idea:** #20 in the owner's ideas backlog · **Author:** Oussama EL HADJI
+**Status:** v1.0.1 · **Download:** [latest APK](https://github.com/Bosaj/android-update-checker/releases/latest) · **Idea:** #20 in the owner's ideas backlog · **Author:** Oussama EL HADJI
 
 <p align="center">
-  <img src="docs/home.png" width="270" alt="Radar home screen" />
-  <img src="docs/detail.png" width="270" alt="App detail sheet" />
-  <img src="docs/review.png" width="270" alt="Review stale apps" />
+  <img src="docs/home.png" width="200" alt="Radar home screen" />
+  <img src="docs/detail.png" width="200" alt="App detail sheet" />
+  <img src="docs/review.png" width="200" alt="Review stale apps" />
+  <img src="docs/dark.png" width="200" alt="Radar home screen in the dark theme" />
 </p>
 
 ---
@@ -22,14 +23,18 @@ On Galaxy phones some apps do not update for weeks: auto-update is off, the apps
 - **Fresh / aging / stale** — you choose the thresholds (default 14 and 45 days). Filter by store or "only stale", search, sort by stalest, most recent or name.
 - **Reminders on Wi-Fi** — a WorkManager job every 1, 3 or 7 days, only on an unmetered network (optionally only while charging). It rescans and tells you how many apps are stale and how many updated since the last check.
 - **One tap to the right store** — opens the app's page in the store that installed it (`market://details` in Play Store, `samsungapps://ProductDetail` in Galaxy Store, web fallbacks).
+- **Update all in one tap** — the home screen opens Play Store's Updates page, where its own "Update all" button updates everything at once; opening it also makes Play Store check for new versions. Galaxy Store opens on its home page (Menu › Updates › Update all), because it has no public link to that page.
 - **Review flow** — walk through the stale apps one by one: open the store page, tap Update there, come back, next. The radar rescans when you return.
 - **Recently updated feed** — updates detected between two scans (old → new version).
 - Ignore apps you never want to update, show preinstalled apps if you want them.
+- **Factory versions** — many ROMs stamp never-updated system apps with a placeholder date (often 2009-01-01). Update Radar shows these as "Factory version, never updated" instead of an absurd day count, and counts them as stale.
 - Arabic (RTL), French and English. Light and dark themes.
 
 ## What it cannot do (honestly)
 
 Android does not let a normal app start an update of another app, and there is no public API that says "an update is available" for someone else's app. Play's In-App Updates API only works for an app's own updates. So Update Radar **finds and routes**: it shows what has gone quiet and opens the store page where *you* tap Update. Root is not used.
+
+Install dates come from Android's own `lastUpdateTime`, so the radar only knows *when* an app was last updated, not whether a newer version exists.
 
 Apps without a launcher icon are not listed: Update Radar declares a launcher `<queries>` filter instead of the sensitive `QUERY_ALL_PACKAGES` permission.
 
