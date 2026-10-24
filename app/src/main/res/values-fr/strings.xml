@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Update Radar</string>
     <string name="channel_name">Rappels de mise à jour</string>
     <string name="channel_desc">Un rappel en Wi-Fi quand des applis ne se sont pas mises à jour depuis longtemps.</string>
@@ -51,6 +51,7 @@
     <string name="tab_apps">Applis</string>
     <string name="tab_updates">Mises à jour récentes</string>
     <string name="tab_updates_count">Mises à jour récentes · %1$d</string>
+    <string name="store_count">%1$s · %2$d</string>
     <string name="empty_none">Seules les applis installées depuis un store ou à la main sont affichées, et aucune n’a été trouvée. Les applis préinstallées sont masquées.</string>
     <string name="empty_filter">Aucune appli ne correspond à ces filtres.</string>
     <string name="empty_feed">Les mises à jour détectées entre deux analyses apparaîtront ici. La première analyse sert de point de départ.</string>
@@ -68,6 +69,8 @@
     <string name="installed_from">Installée depuis</string>
     <string name="last_updated">Dernière mise à jour</string>
     <string name="first_installed">Installée le</string>
+    <string name="factory_version">Version d’usine, jamais mise à jour</string>
+    <string name="factory_date">Fournie avec le système</string>
     <string name="sideload_hint">Cette appli ne vient pas d’un store connu : elle ne se mettra pas à jour seule. Vérifiez son site ou un outil comme Obtainium.</string>
     <string name="open_in">Ouvrir dans %1$s</string>
     <string name="app_info">Infos appli</string>
@@ -78,7 +81,11 @@
     <string name="review_title">Revoir les applis en retard</string>
     <string name="back">Retour</string>
     <string name="review_progress">%1$d sur %2$d</string>
-    <string name="review_done">Terminé. %1$d applis revues.</string>
+    <plurals name="review_done">
+        <item quantity="one">Terminé. %1$d appli revue.</item>
+        <item quantity="many">Terminé. %1$d applis revues.</item>
+        <item quantity="other">Terminé. %1$d applis revues.</item>
+    </plurals>
     <string name="back_to_radar">Retour au radar</string>
     <string name="open_store_page">Ouvrir la page du store</string>
     <string name="skip">Passer</string>
@@ -100,7 +107,8 @@
     <string name="reminders_on">Me rappeler en Wi-Fi</string>
     <string name="reminders_on_desc">Une vérification discrète en arrière-plan, uniquement sur un réseau non limité.</string>
     <string name="every">Fréquence</string>
-    <plurals name="every_days">
+    <!-- "one" also matches 0 in French; the interval is clamped to 1..30, so it is always "every day". -->
+    <plurals name="every_days" tools:ignore="ImpliedQuantity">
         <item quantity="one">Chaque jour</item>
         <item quantity="many">Tous les %1$d jours</item>
         <item quantity="other">Tous les %1$d jours</item>

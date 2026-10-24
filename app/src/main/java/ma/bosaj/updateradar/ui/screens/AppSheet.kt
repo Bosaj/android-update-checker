@@ -20,6 +20,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -37,7 +38,7 @@ import ma.bosaj.updateradar.data.Store
 import ma.bosaj.updateradar.ui.RadarViewModel
 import ma.bosaj.updateradar.ui.components.AppIcon
 import ma.bosaj.updateradar.ui.components.FreshDot
-import ma.bosaj.updateradar.ui.components.daysAgo
+import ma.bosaj.updateradar.ui.components.updatedLabel
 import ma.bosaj.updateradar.ui.components.freshColor
 import ma.bosaj.updateradar.ui.components.storeName
 import ma.bosaj.updateradar.util.StoreLinks
@@ -52,7 +53,9 @@ fun AppSheet(app: InstalledApp, s: RadarSettings, galaxyInstalled: Boolean, vm: 
     val f = Radar.freshness(app, now, s.agingAfterDays, s.staleAfterDays)
     val target = StoreLinks.targetStore(app.store, galaxyInstalled)
     val date = DateFormat.getDateInstance(DateFormat.MEDIUM)
-    ModalBottomSheet(onDismissRequest = { vm.select(null) }) {
+    val factory = stringResource(R.string.factory_date)
+    // Open fully: the half-height state hides the action buttons behind the navigation bar.
+    ModalBottomSheet(onDismissRequest = { vm.select(null) }, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)) {
         Column(Modifier.fillMaxWidth().padding(horizontal = 24.dp).navigationBarsPadding()) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 AppIcon(app.packageName, size = 56.dp, loader = vm.repo.scanner::icon)
@@ -66,13 +69,14 @@ fun AppSheet(app: InstalledApp, s: RadarSettings, galaxyInstalled: Boolean, vm: 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 FreshDot(f)
                 Spacer(Modifier.width(8.dp))
-                Text(stringResource(R.string.updated_ago, daysAgo(Radar.daysSince(app.lastUpdate, now))), color = freshColor(f), style = MaterialTheme.typography.titleMedium)
+                Text(updatedLabel(app.lastUpdate, now), color = freshColor(f), style = MaterialTheme.typography.titleMedium)
             }
             Spacer(Modifier.height(12.dp))
             Fact(stringResource(R.string.version), "${app.versionName} (${app.versionCode})")
             Fact(stringResource(R.string.installed_from), storeName(app.store) + (app.installerPackage?.let { "  ·  $it" } ?: ""))
-            Fact(stringResource(R.string.last_updated), date.format(Date(app.lastUpdate)))
-            Fact(stringResource(R.string.first_installed), date.format(Date(app.firstInstall)))
+            val dateOf = { t: Long -> if (Radar.isFactoryDate(t)) factory else date.format(Date(t)) }
+            Fact(stringResource(R.string.last_updated), dateOf(app.lastUpdate))
+            Fact(stringResource(R.string.first_installed), dateOf(app.firstInstall))
             if (app.store == Store.SIDELOADED || app.store == Store.OTHER_STORE) {
                 Text(stringResource(R.string.sideload_hint), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 8.dp))
             }

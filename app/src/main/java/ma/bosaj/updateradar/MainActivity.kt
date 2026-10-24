@@ -28,9 +28,11 @@ class MainActivity : ComponentActivity() {
     private val vm: RadarViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
+        val splash = installSplashScreen()
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        // Hold the splash until settings are read, so onboarding never flashes for returning users.
+        splash.setKeepOnScreenCondition { !vm.settings.value.loaded }
         setContent {
             UpdateRadarTheme {
                 val ui by vm.ui.collectAsStateWithLifecycle()
@@ -40,6 +42,7 @@ class MainActivity : ComponentActivity() {
                 // Coming back from a store page: rescan so updated apps leave the stale list.
                 LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { if (!ui.loading) vm.refresh() }
 
+                if (!s.loaded) return@UpdateRadarTheme
                 if (!s.onboarded) {
                     OnboardingScreen(ui.apps) {
                         if (Build.VERSION.SDK_INT >= 33) askNotifications.launch(Manifest.permission.POST_NOTIFICATIONS)

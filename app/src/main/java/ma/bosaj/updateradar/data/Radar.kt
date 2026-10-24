@@ -6,6 +6,14 @@ import java.util.concurrent.TimeUnit
 object Radar {
     const val DAY = 86_400_000L
 
+    /**
+     * Many ROMs stamp never-updated system apps with a fixed build date (often 2009-01-01, or 0).
+     * Anything before 2010-01-01 is such a placeholder, not a real install time.
+     */
+    const val FACTORY_CUTOFF = 1_262_304_000_000L
+
+    fun isFactoryDate(epochMillis: Long): Boolean = epochMillis < FACTORY_CUTOFF
+
     fun daysSince(epochMillis: Long, now: Long): Long =
         TimeUnit.MILLISECONDS.toDays((now - epochMillis).coerceAtLeast(0))
 

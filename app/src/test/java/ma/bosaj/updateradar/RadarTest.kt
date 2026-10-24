@@ -26,6 +26,14 @@ class RadarTest {
         assertEquals(Freshness.STALE, Radar.freshness(app("a", 45), now, 14, 45))
     }
 
+    @Test fun romPlaceholderDatesAreFactoryVersions() {
+        assertTrue(Radar.isFactoryDate(0))
+        assertTrue(Radar.isFactoryDate(1_230_768_000_000L)) // 2009-01-01, common ROM stamp
+        assertFalse(Radar.isFactoryDate(now - 3 * Radar.DAY))
+        val factory = app("com.vendor", 0).copy(lastUpdate = 1_230_768_000_000L)
+        assertEquals(Freshness.STALE, Radar.freshness(factory, now, 14, 45))
+    }
+
     @Test fun futureTimestampsCountAsToday() {
         assertEquals(0, Radar.daysSince(now + Radar.DAY, now))
     }
