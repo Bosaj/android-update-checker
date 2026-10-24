@@ -10,7 +10,7 @@ datastore = "1.1.7"
 splashscreen = "1.2.0"
 appcompat = "1.7.1"
 junit = "4.13.2"
-json = "20240303"
+json = "20260814"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
