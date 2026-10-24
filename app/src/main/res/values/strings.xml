@@ -121,6 +121,15 @@
     <string name="privacy">Privacy</string>
     <string name="privacy_desc">Update Radar has no internet permission. The list of your apps never leaves the phone.</string>
     <string name="version_line">Version %1$s · open source on GitHub (Bosaj/android-update-checker)</string>
+    <string name="language">Language</string>
+    <string name="language_system">Phone language</string>
+    <string name="change">Change</string>
+    <string name="close">Close</string>
+    <string name="about">About</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="licences">Open-source licences</string>
+    <string name="licences_intro">Update Radar is free software under the MIT License, built with these open-source libraries:</string>
+    <string name="source_code">Source code on GitHub</string>
 
     <string name="onboard_tagline">Never miss an app update again.</string>
     <string name="onboard_1_t">See what has gone quiet</string>
@@ -132,4 +141,31 @@
     <string name="onboard_4_t">Private by design</string>
     <string name="onboard_4_d">No internet permission, no account, no tracking.</string>
     <string name="onboard_start">Start scanning</string>
+    <plurals name="check_all">
+        <item quantity="one">Check %1$d app in its store</item>
+        <item quantity="other">Check all %1$d in their stores</item>
+    </plurals>
+    <plurals name="review_updated">
+        <item quantity="one">%1$d of them updated.</item>
+        <item quantity="other">%1$d of them updated.</item>
+    </plurals>
+    <string name="autopilot_start">Check them all automatically</string>
+    <string name="autopilot_on">Checking automatically</string>
+    <string name="autopilot_next">Next: %1$s</string>
+    <string name="autopilot_hint">Each time you come back, the next store page opens by itself. Tap Update when the store shows it.</string>
+    <string name="stop">Stop</string>
+    <string name="update_all_note">“Update all” only updates apps that have a newer version. An app with no update for weeks is often already on its latest version: use “Check all” to see each one in its store.</string>
+    <string name="used_ago">used %1$s</string>
+    <string name="last_used">Last used</string>
+    <string name="no_use">No use recorded</string>
+    <string name="usage_title">Last used dates</string>
+    <string name="usage_desc">Optional. Shows when you last opened each app, so you can focus on the old apps you really use. It needs Android’s Usage access, and the dates stay on your phone.</string>
+    <string name="usage_allow">Allow usage access</string>
+    <string name="usage_on">Usage access is on. You can turn it off in Android settings at any time.</string>
+    <string name="open_settings">Open settings</string>
+    <string name="usage_disclosure_title">Allow usage access?</string>
+    <string name="usage_disclosure">Update Radar will read from Android when each app was last opened. It uses this only to show “Last used” and to sort your apps. Nothing is sent anywhere: the app has no internet permission. You can turn it off at any time in Android settings.</string>
+    <string name="continue_btn">Continue</string>
+    <string name="not_now">Not now</string>
+    <string name="sort_used">Recently used first</string>
 </resources>

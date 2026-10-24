@@ -31,7 +31,7 @@ object Radar {
         }
     }
 
-    enum class Sort { STALEST, RECENT, NAME }
+    enum class Sort { STALEST, RECENT, NAME, USED }
 
     data class Filter(
         val query: String = "",
@@ -59,6 +59,8 @@ object Radar {
                     Sort.STALEST -> compareBy<InstalledApp> { it.lastUpdate }.thenBy { it.label.lowercase() }
                     Sort.RECENT -> compareByDescending<InstalledApp> { it.lastUpdate }.thenBy { it.label.lowercase() }
                     Sort.NAME -> compareBy { it.label.lowercase() }
+                    // Most recently used first; among never-used apps, the stalest first.
+                    Sort.USED -> compareByDescending<InstalledApp> { it.lastUsed }.thenBy { it.lastUpdate }
                 },
             )
             .toList()

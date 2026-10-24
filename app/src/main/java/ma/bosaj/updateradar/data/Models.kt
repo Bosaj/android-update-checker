@@ -49,6 +49,8 @@ data class InstalledApp(
     val store: Store,
     val installerPackage: String?,
     val isSystem: Boolean,
+    /** Epoch millis of the last time the app was used; 0 when unknown (no Usage access, or no use recorded). */
+    val lastUsed: Long = 0L,
 )
 
 enum class Freshness { FRESH, AGING, STALE }

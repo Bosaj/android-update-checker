@@ -1,17 +1,43 @@
-# 1. Architecture
+# Architecture
 
-1. Inventory: PackageManager + installer source (Play, Galaxy Store, sideload) + version + lastUpdateTime.
-2. Staleness: days since last update per app, with thresholds and a "recently updated" feed from scan diffs.
-3. Reminders: WorkManager periodic job on unmetered Wi-Fi (optionally while charging).
-4. Actions: deep links to the store page that installed each app; batch "review stale apps" flow.
+Update Radar is a single-module Android app (`:app`, package `ma.bosaj.updateradar`) written in Kotlin with Jetpack Compose and Material 3.
 
-## Proposed stack
-- Kotlin + Jetpack Compose (Material 3)
-- WorkManager
-- DataStore
-- No network permission needed for v1
+```mermaid
+flowchart LR
+    PM[PackageManager<br/>launcher apps, versions,<br/>install source] --> Scanner[AppScanner]
+    US[UsageStatsManager<br/>optional] --> Usage[UsageAccess]
+    Scanner --> Repo[RadarRepository]
+    Usage --> Repo
+    Repo --> Snap[(Snapshot<br/>previous scan + feed)]
+    Repo --> Radar[Radar<br/>pure logic]
+    Settings[(DataStore<br/>settings)] --> Repo
+    Repo --> VM[RadarViewModel]
+    VM --> UI[Compose UI]
+    UI --> Links[StoreLinks<br/>Play / Galaxy deep links]
+    WM[WorkManager<br/>ReminderWorker] --> Repo
+```
 
-## Open bases to fork
-- [ImranR98/Obtainium](https://github.com/ImranR98/Obtainium) — Gets updates directly from source (GitHub, F-Droid); complementary for sideloaded apps.
-- [Play In-App Updates](https://developer.android.com/guide/playcore/in-app-updates) — Works only for your own app — confirms the platform limit.
-- [WorkManager](https://developer.android.com/develop/background-work/background-tasks/persistent) — Background reminders constrained to unmetered networks.
+## Layers
+| File | Role |
+|---|---|
+| `data/Models.kt` | `Store` (installer package → store), `InstalledApp`, `AppChange` |
+| `data/Radar.kt` | Pure Kotlin, no Android types: freshness, factory placeholder dates, filters, sorting (stalest, recent, name, last used), summary, scan diff. Fully unit-tested. |
+| `data/AppScanner.kt` | Reads launcher apps through the launcher `<queries>` filter, versions, `getInstallSourceInfo` |
+| `data/UsageAccess.kt` | Optional last-used dates from `UsageStatsManager`; checks the `GET_USAGE_STATS` app-op |
+| `data/Snapshot.kt` | Previous scan and the "recently updated" feed, as JSON in private files |
+| `data/Settings.kt` | DataStore preferences (thresholds, reminders, ignored apps, onboarding) |
+| `data/RadarRepository.kt` | One scan: apps + last-used dates, diff with the previous scan, feed |
+| `work/Reminders.kt` | Periodic WorkManager job on an unmetered network, notification |
+| `util/StoreLinks.kt` | Store page intents with fallbacks, Play Store Updates page, Samsung routing, web links |
+| `ui/RadarViewModel.kt` | UI state, review queue and the "Check them all" autopilot |
+| `ui/screens/*` | Home (radar, card, list), detail sheet, review, settings, onboarding |
+
+## Key flows
+- **Scan:** on start and every time the app comes back to the foreground, so apps updated in a store leave the stale list at once.
+- **Update all:** `com.google.android.finsky.VIEW_MY_DOWNLOADS` opens Play Store's *Manage apps & device* Updates page. Galaxy Store has no public link to its Updates list (its `samsungapps://` hosts are ProductDetail, SellerDetail, CategoryList, MainPage, ProductSetList and SearchResult), so it opens on its home page.
+- **Check them all:** the review queue holds the stale apps, stalest first. With the autopilot on, the review screen opens the current app's store page after 1.5 s; `ON_RESUME` marks it checked and the next page opens. Apps whose `lastUpdateTime` is newer than the start of the review are counted as updated.
+- **Store routing:** the installer's store when known; Samsung's own preinstalled apps (`com.samsung.*`, `com.sec.*`) go to Galaxy Store; everything else goes to Play Store.
+- **Languages:** AppCompat per-app locales (`AppCompatDelegate.setApplicationLocales`), stored by Android 13+ and by `AppLocalesMetadataHolderService` below.
+
+## Build
+Kotlin 2.2.21, AGP 8.13.2, Gradle 8.14.6, Compose BOM 2025.12.01, minSdk 26, targetSdk/compileSdk 36. Release builds use R8 and resource shrinking and are signed with APK signature v2 + v3.

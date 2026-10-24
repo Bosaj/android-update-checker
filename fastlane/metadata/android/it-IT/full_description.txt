@@ -1,0 +1,12 @@
+Alcune app smettono di aggiornarsi senza dirlo: aggiornamento automatico spento, app divise tra Play Store e Galaxy Store, o l’avviso non arriva mai. Update Radar ti mostra quali e ti porta dove puoi aggiornarle.
+
+★ Un radar delle tue app: ogni app con icona, lo store che l’ha installata e i giorni dall’ultimo aggiornamento.
+★ Aggiorna tutto con un tocco: un pulsante apre la pagina degli aggiornamenti del Play Store, dove il suo «Aggiorna tutto» aggiorna tutto insieme.
+★ Aggiornata, in ritardo, vecchia: scegli tu le soglie; filtri, ricerca e ordinamento.
+★ Promemoria discreti in Wi-Fi: ogni 1, 3 o 7 giorni, solo in Wi-Fi.
+★ Privata per natura: nessun permesso internet, nessun account, niente pubblicità né statistiche.
+★ 8 lingue, con l’arabo da destra a sinistra, da scegliere nell’app.
+
+Cosa non può fare: Android non permette a un’app di aggiornarne altre. Update Radar trova e indirizza; l’aggiornamento lo fa lo store.
+
+Open source (MIT): github.com/Bosaj/android-update-checker

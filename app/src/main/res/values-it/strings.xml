@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Update Radar</string>
+    <string name="channel_name">Promemoria aggiornamenti</string>
+    <string name="channel_desc">Un promemoria in Wi-Fi quando alcune app non si aggiornano da tempo.</string>
+    <plurals name="notif_stale_title">
+        <item quantity="one">%1$d app non si aggiorna da %2$d+ giorni</item>
+        <item quantity="many">%1$d app non si aggiornano da %2$d+ giorni</item>
+        <item quantity="other">%1$d app non si aggiornano da %2$d+ giorni</item>
+    </plurals>
+    <plurals name="notif_updated_text">
+        <item quantity="one">%1$d app aggiornata dall’ultimo controllo.</item>
+        <item quantity="many">%1$d app aggiornate dall’ultimo controllo.</item>
+        <item quantity="other">%1$d app aggiornate dall’ultimo controllo.</item>
+    </plurals>
+    <string name="notif_review_text">Tocca per controllarle e aprire lo store giusto.</string>
+
+    <string name="store_play">Play Store</string>
+    <string name="store_galaxy">Galaxy Store</string>
+    <string name="store_amazon">Amazon Appstore</string>
+    <string name="store_huawei">AppGallery</string>
+    <string name="store_fdroid">F-Droid</string>
+    <string name="store_other">Altro store</string>
+    <string name="store_sideloaded">Installata a mano</string>
+    <string name="store_preinstalled">Preinstallata</string>
+
+    <string name="today">oggi</string>
+    <plurals name="days_ago">
+        <item quantity="one">%1$d giorno fa</item>
+        <item quantity="many">%1$d giorni fa</item>
+        <item quantity="other">%1$d giorni fa</item>
+    </plurals>
+    <string name="fresh">Aggiornata</string>
+    <string name="aging">In ritardo</string>
+    <string name="stale">Vecchia</string>
+    <string name="total">App</string>
+    <string name="last_scan">Scansione alle %1$s</string>
+    <string name="refresh">Scansiona di nuovo</string>
+    <string name="settings">Impostazioni</string>
+    <plurals name="review_stale">
+        <item quantity="one">Controlla %1$d app vecchia</item>
+        <item quantity="many">Controlla %1$d app vecchie</item>
+        <item quantity="other">Controlla %1$d app vecchie</item>
+    </plurals>
+    <plurals name="stale_caption">
+        <item quantity="one">app non aggiornata da %1$d+ giorni</item>
+        <item quantity="many">app non aggiornate da %1$d+ giorni</item>
+        <item quantity="other">app non aggiornate da %1$d+ giorni</item>
+    </plurals>
+    <string name="honesty">Android non permette a nessuna app di aggiornare le altre. Update Radar trova quelle ferme e apre lo store che le ha installate: a te basta toccare Aggiorna.</string>
+    <string name="update_all_play">Aggiorna tutto nel Play Store</string>
+    <string name="update_all_galaxy">Aggiornamenti del Galaxy Store</string>
+    <string name="update_all_hint">Apre il Play Store sulla pagina degli aggiornamenti. Tocca «Aggiorna tutto»; all’apertura lo store cerca nuove versioni.</string>
+    <string name="update_all_hint_galaxy">Il Play Store si apre sugli aggiornamenti: tocca «Aggiorna tutto». Il Galaxy Store si apre sulla home: Menu › Aggiornamenti › Aggiorna tutto.</string>
+    <string name="tab_apps">App</string>
+    <string name="tab_updates">Aggiornate di recente</string>
+    <string name="tab_updates_count">Aggiornate di recente · %1$d</string>
+    <string name="store_count">%1$s · %2$d</string>
+    <string name="empty_none">Sono mostrate solo le app installate da uno store o a mano, e non ne è stata trovata nessuna. Le app preinstallate sono nascoste.</string>
+    <string name="empty_filter">Nessuna app corrisponde a questi filtri.</string>
+    <string name="empty_feed">Qui compariranno gli aggiornamenti rilevati tra due scansioni. La prima scansione è il punto di partenza.</string>
+    <string name="clear_feed">Svuota</string>
+    <string name="search_hint">Cerca app</string>
+    <string name="sort">Ordina</string>
+    <string name="sort_stalest">Prima le più vecchie</string>
+    <string name="sort_recent">Prima le aggiornate di recente</string>
+    <string name="sort_name">Nome</string>
+    <string name="all">Tutte</string>
+    <string name="only_stale">Solo vecchie</string>
+    <string name="updated_ago">Aggiornata %1$s</string>
+    <string name="open_store_for">Apri la pagina di %1$s nello store</string>
+    <string name="version">Versione</string>
+    <string name="installed_from">Installata da</string>
+    <string name="last_updated">Ultimo aggiornamento</string>
+    <string name="first_installed">Prima installazione</string>
+    <string name="factory_version">Versione di fabbrica, mai aggiornata</string>
+    <string name="factory_date">Fornita con il sistema</string>
+    <string name="sideload_hint">Questa app non è stata installata da uno store conosciuto, quindi non si aggiornerà da sola. Controlla il suo sito o uno strumento come Obtainium.</string>
+    <string name="open_in">Apri in %1$s</string>
+    <string name="app_info">Info app</string>
+    <string name="open_app">Apri app</string>
+    <string name="ignore">Ignora questa app</string>
+    <string name="unignore">Non ignorare più</string>
+
+    <string name="review_title">Controlla le app vecchie</string>
+    <string name="back">Indietro</string>
+    <string name="review_progress">%1$d di %2$d</string>
+    <plurals name="review_done">
+        <item quantity="one">Fatto. %1$d app controllata.</item>
+        <item quantity="many">Fatto. %1$d app controllate.</item>
+        <item quantity="other">Fatto. %1$d app controllate.</item>
+    </plurals>
+    <string name="back_to_radar">Torna al radar</string>
+    <string name="open_store_page">Apri nello store</string>
+    <string name="skip">Salta</string>
+    <string name="done_next">Fatto, avanti</string>
+    <string name="review_hint">Tocca Aggiorna nello store, poi torna qui. Update Radar rifà la scansione al tuo ritorno.</string>
+
+    <string name="thresholds">Quando un’app è vecchia?</string>
+    <plurals name="aging_after">
+        <item quantity="one">In ritardo dopo %1$d giorno</item>
+        <item quantity="many">In ritardo dopo %1$d giorni</item>
+        <item quantity="other">In ritardo dopo %1$d giorni</item>
+    </plurals>
+    <plurals name="stale_after">
+        <item quantity="one">Vecchia dopo %1$d giorno</item>
+        <item quantity="many">Vecchia dopo %1$d giorni</item>
+        <item quantity="other">Vecchia dopo %1$d giorni</item>
+    </plurals>
+    <string name="reminders">Promemoria</string>
+    <string name="reminders_on">Avvisami in Wi-Fi</string>
+    <string name="reminders_on_desc">Un controllo discreto in background, solo su una rete senza limiti di traffico.</string>
+    <string name="every">Ogni quanto</string>
+    <plurals name="every_days">
+        <item quantity="one">Ogni giorno</item>
+        <item quantity="many">Ogni %1$d giorni</item>
+        <item quantity="other">Ogni %1$d giorni</item>
+    </plurals>
+    <string name="only_charging">Solo in carica</string>
+    <string name="only_charging_desc">Aspetta che il telefono sia collegato alla corrente.</string>
+    <string name="apps_shown">App mostrate</string>
+    <string name="include_system">Includi le app preinstallate</string>
+    <string name="include_system_desc">Mostra le app di sistema con un’icona nel launcher, anche se non sono mai state aggiornate.</string>
+    <plurals name="ignored_count">
+        <item quantity="one">%1$d app ignorata. Aprila e tocca Non ignorare più per riaverla.</item>
+        <item quantity="many">%1$d app ignorate. Aprine una e tocca Non ignorare più per riaverla.</item>
+        <item quantity="other">%1$d app ignorate. Aprine una e tocca Non ignorare più per riaverla.</item>
+    </plurals>
+    <string name="stores">Store</string>
+    <string name="stores_desc">Apri uno store per usare la sua pagina degli aggiornamenti.</string>
+    <string name="privacy">Privacy</string>
+    <string name="privacy_desc">Update Radar non ha il permesso di accesso a internet. L’elenco delle tue app non lascia mai il telefono.</string>
+    <string name="version_line">Versione %1$s · open source su GitHub (Bosaj/android-update-checker)</string>
+    <string name="language">Lingua</string>
+    <string name="language_system">Lingua del telefono</string>
+    <string name="change">Cambia</string>
+    <string name="close">Chiudi</string>
+    <string name="about">Informazioni</string>
+    <string name="privacy_policy">Informativa sulla privacy</string>
+    <string name="licences">Licenze open source</string>
+    <string name="licences_intro">Update Radar è software libero con licenza MIT, realizzato con queste librerie open source:</string>
+    <string name="source_code">Codice sorgente su GitHub</string>
+
+    <string name="onboard_tagline">Non perdere più un aggiornamento.</string>
+    <string name="onboard_1_t">Scopri cosa è fermo</string>
+    <string name="onboard_1_d">Ogni app con la data del suo ultimo aggiornamento, dal Play Store, dal Galaxy Store o installata a mano.</string>
+    <string name="onboard_2_t">Un promemoria in Wi-Fi</string>
+    <string name="onboard_2_d">Un controllo in background in Wi-Fi ti avvisa quando alcune app non si aggiornano da settimane.</string>
+    <string name="onboard_3_t">Un tocco fino allo store giusto</string>
+    <string name="onboard_3_d">Android non permette alle app di aggiornare le altre, quindi Update Radar apre la pagina esatta dello store. Tu tocchi Aggiorna.</string>
+    <string name="onboard_4_t">Privata per natura</string>
+    <string name="onboard_4_d">Nessun permesso internet, nessun account, nessun tracciamento.</string>
+    <string name="onboard_start">Avvia la scansione</string>
+    <plurals name="check_all">
+        <item quantity="one">Controlla %1$d app nel suo store</item>
+        <item quantity="many">Controlla tutte le %1$d nei loro store</item>
+        <item quantity="other">Controlla tutte le %1$d nei loro store</item>
+    </plurals>
+    <plurals name="review_updated">
+        <item quantity="one">%1$d di queste è stata aggiornata.</item>
+        <item quantity="many">%1$d di queste sono state aggiornate.</item>
+        <item quantity="other">%1$d di queste sono state aggiornate.</item>
+    </plurals>
+    <string name="autopilot_start">Controllale tutte in automatico</string>
+    <string name="autopilot_on">Controllo automatico</string>
+    <string name="autopilot_next">Prossima: %1$s</string>
+    <string name="autopilot_hint">Ogni volta che torni, la pagina dello store successiva si apre da sola. Tocca Aggiorna quando lo store lo mostra.</string>
+    <string name="stop">Ferma</string>
+    <string name="update_all_note">«Aggiorna tutto» aggiorna solo le app che hanno una versione più recente. Un’app senza aggiornamenti da settimane spesso è già all’ultima versione: usa «Controlla tutte» per vederle una per una nel loro store.</string>
+    <string name="used_ago">usata %1$s</string>
+    <string name="last_used">Ultimo utilizzo</string>
+    <string name="no_use">Nessun utilizzo registrato</string>
+    <string name="usage_title">Date di ultimo utilizzo</string>
+    <string name="usage_desc">Facoltativo. Mostra quando hai aperto ogni app l’ultima volta, per concentrarti sulle app vecchie che usi davvero. Serve l’accesso ai dati di utilizzo di Android; le date restano sul telefono.</string>
+    <string name="usage_allow">Consenti accesso</string>
+    <string name="usage_on">L’accesso ai dati di utilizzo è attivo. Puoi disattivarlo quando vuoi nelle impostazioni di Android.</string>
+    <string name="open_settings">Apri impostazioni</string>
+    <string name="usage_disclosure_title">Consentire l’accesso ai dati di utilizzo?</string>
+    <string name="usage_disclosure">Update Radar leggerà da Android quando ogni app è stata aperta l’ultima volta. Lo usa solo per mostrare «Ultimo utilizzo» e ordinare le app. Non viene inviato nulla: l’app non ha il permesso di accesso a internet. Puoi disattivarlo quando vuoi nelle impostazioni di Android.</string>
+    <string name="continue_btn">Continua</string>
+    <string name="not_now">Non ora</string>
+    <string name="sort_used">Prima le usate di recente</string>
+</resources>

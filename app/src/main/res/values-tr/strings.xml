@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Update Radar</string>
+    <string name="channel_name">Güncelleme hatırlatmaları</string>
+    <string name="channel_desc">Uygulamalar bir süredir güncellenmediğinde Wi-Fi’de bir hatırlatma.</string>
+    <plurals name="notif_stale_title">
+        <item quantity="one">%1$d uygulama %2$d+ gündür güncellenmedi</item>
+        <item quantity="other">%1$d uygulama %2$d+ gündür güncellenmedi</item>
+    </plurals>
+    <plurals name="notif_updated_text">
+        <item quantity="one">Son kontrolden beri %1$d uygulama güncellendi.</item>
+        <item quantity="other">Son kontrolden beri %1$d uygulama güncellendi.</item>
+    </plurals>
+    <string name="notif_review_text">Gözden geçirmek ve doğru mağazayı açmak için dokunun.</string>
+
+    <string name="store_play">Play Store</string>
+    <string name="store_galaxy">Galaxy Store</string>
+    <string name="store_amazon">Amazon Appstore</string>
+    <string name="store_huawei">AppGallery</string>
+    <string name="store_fdroid">F-Droid</string>
+    <string name="store_other">Başka mağaza</string>
+    <string name="store_sideloaded">Elle yüklendi</string>
+    <string name="store_preinstalled">Önceden yüklü</string>
+
+    <string name="today">bugün</string>
+    <plurals name="days_ago">
+        <item quantity="one">%1$d gün önce</item>
+        <item quantity="other">%1$d gün önce</item>
+    </plurals>
+    <string name="fresh">Güncel</string>
+    <string name="aging">Eskiyor</string>
+    <string name="stale">Eski</string>
+    <string name="total">Uygulama</string>
+    <string name="last_scan">Tarama saati: %1$s</string>
+    <string name="refresh">Yeniden tara</string>
+    <string name="settings">Ayarlar</string>
+    <plurals name="review_stale">
+        <item quantity="one">%1$d eski uygulamayı gözden geçir</item>
+        <item quantity="other">%1$d eski uygulamayı gözden geçir</item>
+    </plurals>
+    <plurals name="stale_caption">
+        <item quantity="one">uygulama %1$d+ gündür güncellenmedi</item>
+        <item quantity="other">uygulama %1$d+ gündür güncellenmedi</item>
+    </plurals>
+    <string name="honesty">Android hiçbir uygulamanın diğer uygulamaları güncellemesine izin vermez. Update Radar durgun kalanları bulur ve onları yükleyen mağazayı açar; size yalnızca Güncelle’ye dokunmak kalır.</string>
+    <string name="update_all_play">Play Store’da tümünü güncelle</string>
+    <string name="update_all_galaxy">Galaxy Store güncellemeleri</string>
+    <string name="update_all_hint">Play Store’u güncellemeler sayfasında açar. Orada “Tümünü güncelle”ye dokunun; mağaza sayfa açılınca yeni sürümleri denetler.</string>
+    <string name="update_all_hint_galaxy">Play Store güncellemeler sayfasında açılır: “Tümünü güncelle”ye dokunun. Galaxy Store ana sayfasında açılır: Menü › Güncellemeler › Tümünü güncelle.</string>
+    <string name="tab_apps">Uygulamalar</string>
+    <string name="tab_updates">Son güncellenenler</string>
+    <string name="tab_updates_count">Son güncellenenler · %1$d</string>
+    <string name="store_count">%1$s · %2$d</string>
+    <string name="empty_none">Yalnızca bir mağazadan ya da elle yüklenen uygulamalar gösterilir ve hiçbiri bulunamadı. Önceden yüklü uygulamalar gizli.</string>
+    <string name="empty_filter">Bu filtrelere uyan uygulama yok.</string>
+    <string name="empty_feed">İki tarama arasında algılanan güncellemeler burada görünecek. İlk tarama başlangıç noktasıdır.</string>
+    <string name="clear_feed">Temizle</string>
+    <string name="search_hint">Uygulama ara</string>
+    <string name="sort">Sırala</string>
+    <string name="sort_stalest">En eskiler önce</string>
+    <string name="sort_recent">Son güncellenenler önce</string>
+    <string name="sort_name">Ad</string>
+    <string name="all">Tümü</string>
+    <string name="only_stale">Yalnızca eskiler</string>
+    <string name="updated_ago">Güncellendi: %1$s</string>
+    <string name="open_store_for">%1$s mağaza sayfasını aç</string>
+    <string name="version">Sürüm</string>
+    <string name="installed_from">Yükleyen</string>
+    <string name="last_updated">Son güncelleme</string>
+    <string name="first_installed">İlk yükleme</string>
+    <string name="factory_version">Fabrika sürümü, hiç güncellenmedi</string>
+    <string name="factory_date">Sistemle birlikte geldi</string>
+    <string name="sideload_hint">Bu uygulama bilinen bir mağazadan yüklenmediği için kendiliğinden güncellenmez. Web sitesine ya da Obtainium gibi bir araca bakın.</string>
+    <string name="open_in">%1$s içinde aç</string>
+    <string name="app_info">Uygulama bilgisi</string>
+    <string name="open_app">Uygulamayı aç</string>
+    <string name="ignore">Bu uygulamayı yok say</string>
+    <string name="unignore">Yok saymayı bırak</string>
+
+    <string name="review_title">Eski uygulamaları gözden geçir</string>
+    <string name="back">Geri</string>
+    <string name="review_progress">%1$d / %2$d</string>
+    <plurals name="review_done">
+        <item quantity="one">Bitti. %1$d uygulama gözden geçirildi.</item>
+        <item quantity="other">Bitti. %1$d uygulama gözden geçirildi.</item>
+    </plurals>
+    <string name="back_to_radar">Radara dön</string>
+    <string name="open_store_page">Mağaza sayfasını aç</string>
+    <string name="skip">Atla</string>
+    <string name="done_next">Tamam, sonraki</string>
+    <string name="review_hint">Mağazada Güncelle’ye dokunun, sonra buraya dönün. Update Radar döndüğünüzde yeniden tarar.</string>
+
+    <string name="thresholds">Bir uygulama ne zaman eski sayılır?</string>
+    <plurals name="aging_after">
+        <item quantity="one">%1$d gün sonra eskiyor</item>
+        <item quantity="other">%1$d gün sonra eskiyor</item>
+    </plurals>
+    <plurals name="stale_after">
+        <item quantity="one">%1$d gün sonra eski</item>
+        <item quantity="other">%1$d gün sonra eski</item>
+    </plurals>
+    <string name="reminders">Hatırlatmalar</string>
+    <string name="reminders_on">Wi-Fi’de hatırlat</string>
+    <string name="reminders_on_desc">Arka planda sessiz bir kontrol, yalnızca kotasız bir ağda.</string>
+    <string name="every">Ne sıklıkla</string>
+    <plurals name="every_days">
+        <item quantity="one">Her gün</item>
+        <item quantity="other">%1$d günde bir</item>
+    </plurals>
+    <string name="only_charging">Yalnızca şarj olurken</string>
+    <string name="only_charging_desc">Telefon prize takılana kadar bekle.</string>
+    <string name="apps_shown">Gösterilen uygulamalar</string>
+    <string name="include_system">Önceden yüklü uygulamaları dahil et</string>
+    <string name="include_system_desc">Başlatıcı simgesi olan sistem uygulamalarını, hiç güncellenmemiş olsalar da göster.</string>
+    <plurals name="ignored_count">
+        <item quantity="one">%1$d uygulama yok sayıldı. Geri getirmek için açın ve Yok saymayı bırak’a dokunun.</item>
+        <item quantity="other">%1$d uygulama yok sayıldı. Geri getirmek için birini açın ve Yok saymayı bırak’a dokunun.</item>
+    </plurals>
+    <string name="stores">Mağazalar</string>
+    <string name="stores_desc">Kendi güncellemeler sayfasını kullanmak için bir mağaza açın.</string>
+    <string name="privacy">Gizlilik</string>
+    <string name="privacy_desc">Update Radar’ın internet izni yok. Uygulama listeniz telefondan asla çıkmaz.</string>
+    <string name="version_line">Sürüm %1$s · GitHub’da açık kaynak (Bosaj/android-update-checker)</string>
+    <string name="language">Dil</string>
+    <string name="language_system">Telefonun dili</string>
+    <string name="change">Değiştir</string>
+    <string name="close">Kapat</string>
+    <string name="about">Hakkında</string>
+    <string name="privacy_policy">Gizlilik politikası</string>
+    <string name="licences">Açık kaynak lisansları</string>
+    <string name="licences_intro">Update Radar, MIT Lisansı ile sunulan özgür bir yazılımdır ve şu açık kaynak kütüphanelerle yapılmıştır:</string>
+    <string name="source_code">GitHub’daki kaynak kodu</string>
+
+    <string name="onboard_tagline">Bir daha hiçbir güncellemeyi kaçırmayın.</string>
+    <string name="onboard_1_t">Durgun kalanları görün</string>
+    <string name="onboard_1_d">Play Store’dan, Galaxy Store’dan ya da elle yüklenen her uygulama, son güncelleme tarihiyle.</string>
+    <string name="onboard_2_t">Wi-Fi’de bir hatırlatma</string>
+    <string name="onboard_2_d">Wi-Fi’de arka plandaki bir kontrol, uygulamalar haftalardır güncellenmediğinde size haber verir.</string>
+    <string name="onboard_3_t">Tek dokunuşla doğru mağaza</string>
+    <string name="onboard_3_d">Android, uygulamaların diğer uygulamaları güncellemesine izin vermez; bu yüzden Update Radar tam mağaza sayfasını açar. Siz Güncelle’ye dokunursunuz.</string>
+    <string name="onboard_4_t">Tasarımı gereği gizli</string>
+    <string name="onboard_4_d">İnternet izni yok, hesap yok, takip yok.</string>
+    <string name="onboard_start">Taramayı başlat</string>
+    <plurals name="check_all">
+        <item quantity="one">%1$d uygulamayı mağazasında denetle</item>
+        <item quantity="other">%1$d uygulamanın hepsini mağazalarında denetle</item>
+    </plurals>
+    <plurals name="review_updated">
+        <item quantity="one">Bunlardan %1$d tanesi güncellendi.</item>
+        <item quantity="other">Bunlardan %1$d tanesi güncellendi.</item>
+    </plurals>
+    <string name="autopilot_start">Hepsini otomatik denetle</string>
+    <string name="autopilot_on">Otomatik denetim</string>
+    <string name="autopilot_next">Sıradaki: %1$s</string>
+    <string name="autopilot_hint">Her geri döndüğünüzde sıradaki mağaza sayfası kendiliğinden açılır. Mağaza gösterdiğinde Güncelle’ye dokunun.</string>
+    <string name="stop">Durdur</string>
+    <string name="update_all_note">“Tümünü güncelle” yalnızca yeni sürümü olan uygulamaları günceller. Haftalardır güncellenmeyen bir uygulama çoğu zaman zaten son sürümdedir: her birini mağazasında görmek için “Hepsini denetle”yi kullanın.</string>
+    <string name="used_ago">kullanıldı: %1$s</string>
+    <string name="last_used">Son kullanım</string>
+    <string name="no_use">Kayıtlı kullanım yok</string>
+    <string name="usage_title">Son kullanım tarihleri</string>
+    <string name="usage_desc">İsteğe bağlı. Her uygulamayı en son ne zaman açtığınızı gösterir; böylece gerçekten kullandığınız eski uygulamalara odaklanırsınız. Android’in Kullanım erişimi gerekir; tarihler telefonunuzda kalır.</string>
+    <string name="usage_allow">Erişime izin ver</string>
+    <string name="usage_on">Kullanım erişimi açık. Android ayarlarından istediğiniz zaman kapatabilirsiniz.</string>
+    <string name="open_settings">Ayarları aç</string>
+    <string name="usage_disclosure_title">Kullanım erişimine izin verilsin mi?</string>
+    <string name="usage_disclosure">Update Radar, her uygulamanın en son ne zaman açıldığını Android’den okur. Bunu yalnızca “Son kullanım”ı göstermek ve uygulamalarınızı sıralamak için kullanır. Hiçbir şey gönderilmez: uygulamanın internet izni yok. Android ayarlarından istediğiniz zaman kapatabilirsiniz.</string>
+    <string name="continue_btn">Devam</string>
+    <string name="not_now">Şimdi değil</string>
+    <string name="sort_used">Son kullanılanlar önce</string>
+</resources>

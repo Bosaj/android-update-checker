@@ -49,11 +49,11 @@ import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppSheet(app: InstalledApp, s: RadarSettings, galaxyInstalled: Boolean, vm: RadarViewModel) {
+fun AppSheet(app: InstalledApp, s: RadarSettings, galaxyInstalled: Boolean, usageAccess: Boolean, vm: RadarViewModel) {
     val context = LocalContext.current
     val now = System.currentTimeMillis()
     val f = Radar.freshness(app, now, s.agingAfterDays, s.staleAfterDays)
-    val target = StoreLinks.targetStore(app.store, galaxyInstalled)
+    val target = StoreLinks.targetStore(app.store, galaxyInstalled, app.packageName)
     val date = DateFormat.getDateInstance(DateFormat.MEDIUM)
     val factory = stringResource(R.string.factory_date)
     // Open fully: the half-height state hides the action buttons behind the navigation bar.
@@ -80,6 +80,9 @@ fun AppSheet(app: InstalledApp, s: RadarSettings, galaxyInstalled: Boolean, vm: 
             val dateOf = { t: Long -> if (Radar.isFactoryDate(t)) factory else date.format(Date(t)) }
             Fact(stringResource(R.string.last_updated), dateOf(app.lastUpdate))
             Fact(stringResource(R.string.first_installed), dateOf(app.firstInstall))
+            if (usageAccess) {
+                Fact(stringResource(R.string.last_used), if (app.lastUsed > 0) date.format(Date(app.lastUsed)) else stringResource(R.string.no_use))
+            }
             if (app.store == Store.SIDELOADED || app.store == Store.OTHER_STORE) {
                 Text(stringResource(R.string.sideload_hint), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 8.dp))
             }

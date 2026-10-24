@@ -1,0 +1,12 @@
+Alguns apps param de atualizar sem avisar: atualização automática desligada, apps divididos entre Play Store e Galaxy Store, ou o aviso nunca chega. O Update Radar mostra quais e leva você direto para onde se atualiza.
+
+★ Um radar dos seus apps: cada app com ícone, a loja que o instalou e os dias desde a última atualização.
+★ Atualizar tudo com um toque: um botão abre a página de atualizações da Play Store, onde o “Atualizar tudo” dela atualiza tudo de uma vez.
+★ Em dia, envelhecendo, desatualizado: você escolhe os limites; filtros, busca e ordenação.
+★ Lembretes discretos no Wi-Fi: a cada 1, 3 ou 7 dias, só no Wi-Fi.
+★ Privado desde o início: sem permissão de internet, sem conta, sem anúncios nem estatísticas.
+★ 8 idiomas, com árabe da direita para a esquerda, escolhidos dentro do app.
+
+O que ele não faz: o Android não permite que um app atualize outros. O Update Radar encontra e direciona; quem atualiza é a loja.
+
+Código aberto (MIT): github.com/Bosaj/android-update-checker
