@@ -6,10 +6,14 @@ on:
   pull_request:
     branches: [ main, master ]
 
+permissions:
+  contents: read
+
 jobs:
   test:
     name: Build & Test Android App
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
       - name: Checkout Code
@@ -24,15 +28,35 @@ jobs:
       - name: Verify Documentation & Governance Standards
         run: |
           echo "Verifying repository governance standards..."
-          test -f README.md && echo "✓ README.md present"
-          test -f LICENSE && echo "✓ LICENSE present"
-          test -f CONTRIBUTING.md && echo "✓ CONTRIBUTING.md present"
-          test -f CONTRIBUTORS.md && echo "✓ CONTRIBUTORS.md present"
-          test -f SECURITY.md && echo "✓ SECURITY.md present"
-          test -f CHANGELOG.md && echo "✓ CHANGELOG.md present"
+          for f in README.md LICENSE CONTRIBUTING.md CONTRIBUTORS.md SECURITY.md CHANGELOG.md; do
+            test -f "$f" || { echo "::error::$f is missing"; exit 1; }
+            echo "✓ $f present"
+          done
 
       - name: Make Gradlew Executable
         run: chmod +x ./gradlew
 
+      # Each step fails the job on error: no "|| true".
       - name: Run Unit Tests
-        run: ./gradlew testDebugUnitTest --no-daemon || ./gradlew test --no-daemon || true
+        run: ./gradlew testDebugUnitTest --no-daemon --stacktrace
+
+      - name: Android Lint
+        run: ./gradlew lintDebug --no-daemon
+
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --no-daemon
+
+      - name: Upload Reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: app/build/reports/
+          retention-days: 7
+
+      - name: Upload Debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: update-radar-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          retention-days: 14

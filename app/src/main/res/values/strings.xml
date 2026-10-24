@@ -46,6 +46,7 @@
     <string name="tab_apps">Apps</string>
     <string name="tab_updates">Recently updated</string>
     <string name="tab_updates_count">Recently updated · %1$d</string>
+    <string name="store_count">%1$s · %2$d</string>
     <string name="empty_none">Only apps installed from a store or by hand are shown, and none were found. Preinstalled apps are hidden.</string>
     <string name="empty_filter">No app matches these filters.</string>
     <string name="empty_feed">Updates detected between scans will appear here. The first scan is the starting point.</string>
@@ -63,6 +64,8 @@
     <string name="installed_from">Installed from</string>
     <string name="last_updated">Last updated</string>
     <string name="first_installed">First installed</string>
+    <string name="factory_version">Factory version, never updated</string>
+    <string name="factory_date">Came with the system</string>
     <string name="sideload_hint">This app was not installed from a known store, so it will not update by itself. Check its website or a tool like Obtainium.</string>
     <string name="open_in">Open in %1$s</string>
     <string name="app_info">App info</string>
@@ -73,7 +76,10 @@
     <string name="review_title">Review stale apps</string>
     <string name="back">Back</string>
     <string name="review_progress">%1$d of %2$d</string>
-    <string name="review_done">All done. %1$d apps reviewed.</string>
+    <plurals name="review_done">
+        <item quantity="one">All done. %1$d app reviewed.</item>
+        <item quantity="other">All done. %1$d apps reviewed.</item>
+    </plurals>
     <string name="back_to_radar">Back to the radar</string>
     <string name="open_store_page">Open store page</string>
     <string name="skip">Skip</string>

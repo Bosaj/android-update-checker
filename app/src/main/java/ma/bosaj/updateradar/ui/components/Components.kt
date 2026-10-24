@@ -21,9 +21,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.produceState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,6 +36,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.rotate
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -80,7 +83,8 @@ fun RadarScope(
     val blips = remember(apps, now, aging, stale) {
         apps.map { a ->
             val days = Radar.daysSince(a.lastUpdate, now).toFloat()
-            val r = (0.22f + 0.74f * min(days / (stale * 2f), 1f))
+            // Start outside the centre label so no blip covers the count.
+            val r = (0.46f + 0.5f * min(days / (stale * 2f), 1f))
             val theta = ((a.packageName.hashCode().toLong() and 0xffff) / 65535f) * 360f
             Triple(r, theta, Radar.freshness(a, now, aging, stale))
         }
@@ -117,9 +121,8 @@ fun RadarScope(
 @Composable
 fun AppIcon(pkg: String, size: Dp = 44.dp, loader: (String) -> android.graphics.drawable.Drawable?) {
     val px = with(androidx.compose.ui.platform.LocalDensity.current) { size.roundToPx() }
-    val bmp by produceState<ImageBitmap?>(null, pkg) {
-        value = withContext(Dispatchers.IO) { loader(pkg)?.toBitmap(px, px)?.asImageBitmap() }
-    }
+    var bmp by remember(pkg) { mutableStateOf<ImageBitmap?>(null) }
+    LaunchedEffect(pkg, px) { bmp = withContext(Dispatchers.IO) { loader(pkg)?.toBitmap(px, px)?.asImageBitmap() } }
     Box(
         Modifier
             .size(size)
@@ -157,6 +160,16 @@ fun StoreChip(store: Store) {
     }
 }
 
+/** A count in the UI language's digits, matching numbers formatted by string resources. */
+@Composable
+fun localCount(n: Int): String = String.format(LocalConfiguration.current.locales[0], "%d", n)
+
+/** "Updated 12 days ago", or "Factory version" when the system only gives a placeholder date. */
+@Composable
+fun updatedLabel(lastUpdate: Long, now: Long): String =
+    if (Radar.isFactoryDate(lastUpdate)) stringResource(R.string.factory_version)
+    else stringResource(R.string.updated_ago, daysAgo(Radar.daysSince(lastUpdate, now)))
+
 @Composable
 fun daysAgo(days: Long): String = when (days) {
     0L -> stringResource(R.string.today)
@@ -178,7 +191,7 @@ fun FreshDot(f: Freshness, modifier: Modifier = Modifier) {
 @Composable
 fun Stat(value: Int, label: String, color: Color, modifier: Modifier = Modifier) {
     Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(value.toString(), style = MaterialTheme.typography.titleLarge, color = color, fontWeight = FontWeight.Black)
+        Text(localCount(value), style = MaterialTheme.typography.titleLarge, color = color, fontWeight = FontWeight.Black)
         Text(label, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }

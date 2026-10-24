@@ -65,7 +65,8 @@
     <string name="honesty">لا يسمح أندرويد لأي تطبيق بتحديث تطبيقات أخرى. يجد رادار التحديثات التطبيقات التي توقفت عن التحديث ويفتح المتجر الذي ثبّتها، فلا يبقى عليك إلا الضغط على «تحديث».</string>
     <string name="tab_apps">التطبيقات</string>
     <string name="tab_updates">حُدِّثت مؤخرًا</string>
-    <string name="tab_updates_count">حُدِّثت مؤخرًا · %1$d</string>
+    <string name="tab_updates_count">حُدِّثت مؤخرًا (%1$d)</string>
+    <string name="store_count">%1$s (%2$d)</string>
     <string name="empty_none">تُعرض فقط التطبيقات المثبَّتة من متجر أو يدويًّا، ولم يُعثر على أي منها. التطبيقات المثبتة مسبقًا مخفية.</string>
     <string name="empty_filter">لا يوجد تطبيق يطابق هذه الفلاتر.</string>
     <string name="empty_feed">ستظهر هنا التحديثات المكتشفة بين فحص وآخر. الفحص الأول هو نقطة البداية.</string>
@@ -83,6 +84,8 @@
     <string name="installed_from">ثُبِّت من</string>
     <string name="last_updated">آخر تحديث</string>
     <string name="first_installed">أول تثبيت</string>
+    <string name="factory_version">نسخة المصنع، لم تُحدَّث قط</string>
+    <string name="factory_date">مثبّت مع النظام</string>
     <string name="sideload_hint">هذا التطبيق لم يُثبَّت من متجر معروف، فلن يتحدث وحده. راجع موقعه أو أداة مثل Obtainium.</string>
     <string name="open_in">افتح في %1$s</string>
     <string name="app_info">معلومات التطبيق</string>
@@ -93,7 +96,14 @@
     <string name="review_title">مراجعة التطبيقات المتأخرة</string>
     <string name="back">رجوع</string>
     <string name="review_progress">%1$d من %2$d</string>
-    <string name="review_done">انتهيت. روجِع %1$d تطبيق.</string>
+    <plurals name="review_done">
+        <item quantity="zero">انتهيت. لم يُراجَع أي تطبيق.</item>
+        <item quantity="one">انتهيت. روجِع تطبيق واحد.</item>
+        <item quantity="two">انتهيت. روجِع تطبيقان.</item>
+        <item quantity="few">انتهيت. روجِع %1$d تطبيقات.</item>
+        <item quantity="many">انتهيت. روجِع %1$d تطبيقًا.</item>
+        <item quantity="other">انتهيت. روجِع %1$d تطبيق.</item>
+    </plurals>
     <string name="back_to_radar">العودة إلى الرادار</string>
     <string name="open_store_page">افتح صفحة المتجر</string>
     <string name="skip">تخطَّ</string>

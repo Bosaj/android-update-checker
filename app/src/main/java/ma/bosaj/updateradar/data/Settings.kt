@@ -24,6 +24,8 @@ data class RadarSettings(
     val ignored: Set<String> = emptySet(),
     val onboarded: Boolean = false,
     val lastScanAt: Long = 0L,
+    /** False only for the placeholder used before DataStore has been read. */
+    val loaded: Boolean = false,
 )
 
 class SettingsRepo(private val context: Context) {
@@ -53,6 +55,7 @@ class SettingsRepo(private val context: Context) {
         ignored = this[K.ignored] ?: emptySet(),
         onboarded = this[K.onboarded] ?: false,
         lastScanAt = this[K.lastScan] ?: 0L,
+        loaded = true,
     )
 
     suspend fun setThresholds(aging: Int, stale: Int) = context.store.edit {
