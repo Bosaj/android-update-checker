@@ -1,0 +1,4 @@
+1.2.0
+• One-tap updates: turn on the helper once, then "Update everything" presses Play Store's Update all and every Galaxy Store app's Update button for you
+• Check all stale apps hands-free
+• Apps the store shows as current are marked "On latest version" and leave the stale list

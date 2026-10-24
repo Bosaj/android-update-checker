@@ -180,4 +180,23 @@
     <string name="continue_btn">Continua</string>
     <string name="not_now">Non ora</string>
     <string name="sort_used">Prima le usate di recente</string>
+    <string name="helper_service_label">Update Radar — aggiornamenti con un tocco</string>
+    <string name="helper_service_desc">Tocca per te i pulsanti Aggiorna e «Aggiorna tutto» del Play Store e del Galaxy Store quando avvii «Aggiorna tutto» o «Controlla tutte» in Update Radar. Agisce solo in questi due store e solo durante un giro che avvii tu. Legge solo i pulsanti degli store e non invia nulla: Update Radar non ha il permesso di accesso a internet.</string>
+    <string name="helper_overlay">Update Radar · %1$d / %2$d</string>
+    <string name="update_everything">Aggiorna tutto</string>
+    <string name="update_everything_hint">Tocca «Aggiorna tutto» nel Play Store, poi Aggiorna su ogni app del Galaxy Store che ne ha bisogno. Segui la pillola in basso e tocca Ferma quando vuoi.</string>
+    <string name="helper_turn_on">Attiva gli aggiornamenti con un tocco</string>
+    <string name="helper_title">Aggiornamenti con un tocco</string>
+    <string name="helper_desc_off">Lascia che Update Radar tocchi per te i pulsanti Aggiorna degli store: 250 app con un tocco invece di 250.</string>
+    <string name="helper_on">Gli aggiornamenti con un tocco sono attivi. Disattivali quando vuoi nelle impostazioni di accessibilità di Android.</string>
+    <string name="helper_disclosure_title">Attivare gli aggiornamenti con un tocco?</string>
+    <string name="helper_disclosure">Update Radar userà il servizio di accessibilità di Android per toccare al posto tuo i pulsanti Aggiorna e «Aggiorna tutto» del Play Store e del Galaxy Store.\n\n• Agisce solo in questi due store e solo durante un giro che avvii tu.\n• Legge solo i pulsanti degli store, nient’altro sullo schermo.\n• Non viene inviato nulla: l’app non ha il permesso di accesso a internet.\n\nNella schermata successiva scegli Update Radar e attivalo. Se Android dice che l’impostazione è limitata, apri Info app › ⋮ › Consenti impostazioni limitate e riprova.
+
+Samsung: App installate › Update Radar.</string>
+    <string name="helper_open_settings">Apri impostazioni di accessibilità</string>
+    <string name="helper_running">Aggiornamento… %1$d di %2$d</string>
+    <string name="helper_done_title">Fatto</string>
+    <string name="helper_done">Aggiornamenti avviati: %1$d · All’ultima versione: %2$d · Non controllate: %3$d</string>
+    <string name="helper_done_play">Play Store: «Aggiorna tutto» toccato.</string>
+    <string name="verified_label">Ultima versione · controllata %1$s</string>
 </resources>

@@ -17,6 +17,7 @@ Everything the Play Console asks for is in `fastlane/metadata/android/` (fastlan
 - [x] **Data safety:** no data collected or shared. The app has no internet permission, so nothing leaves the device. Last-used dates and the app list are processed on the device only.
 - [x] **Package visibility:** launcher `<queries>` filter, no `QUERY_ALL_PACKAGES` declaration needed
 - [x] **Usage access (`PACKAGE_USAGE_STATS`):** optional, behind an in-app prominent disclosure before Android's settings screen opens; the app works fully without it
+- [x] **Accessibility (one-tap updates):** the helper is a deterministic, rule-based automation with a fixed script (open a store page; if it shows Update, press it), which Google Play permits for apps that are not accessibility tools. In the Play Console complete the **Accessibility API declaration**: purpose "press Update / Update all in Play Store and Galaxy Store when the user starts a run", data accessed "button labels of those two stores", not shared. The in-app prominent disclosure is shown before Android's settings open, and `android:isAccessibilityTool="false"`.
 - [x] **Foreground services:** none (WorkManager's foreground service is removed), so no declaration
 - [x] **Notifications:** runtime permission on Android 13+, optional
 - [x] **Ads:** none · **Target audience:** adults (not designed for children) · **Content rating:** everyone
