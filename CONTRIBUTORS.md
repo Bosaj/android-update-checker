@@ -1,6 +1,6 @@
 # Contributors & Acknowledgements
 
-The **Android App Update Checker & Release Monitor** repository is an open-source initiative developed and maintained by **Oussama EL HADJI** (`@Bosaj`).
+The **Update Radar** repository is an open-source initiative developed and maintained by **Oussama EL HADJI** (`@Bosaj`).
 
 ## Project Creator & Lead Architect
 

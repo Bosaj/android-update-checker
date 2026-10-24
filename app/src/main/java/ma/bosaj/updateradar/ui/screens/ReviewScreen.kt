@@ -168,7 +168,7 @@ fun ReviewScreen(vm: RadarViewModel, ui: UiState) {
                         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh),
                         modifier = Modifier.fillMaxWidth(),
                     ) {
-                        Column(Modifier.padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                        Column(Modifier.fillMaxWidth().padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                             AppIcon(app.packageName, size = 84.dp, loader = vm.repo.scanner::icon)
                             Spacer(Modifier.height(16.dp))
                             Text(app.label, style = MaterialTheme.typography.headlineSmall, textAlign = TextAlign.Center)
@@ -179,19 +179,22 @@ fun ReviewScreen(vm: RadarViewModel, ui: UiState) {
                             )
                             Spacer(Modifier.height(8.dp))
                             StoreChip(app.store)
-                            Spacer(Modifier.height(24.dp))
-                            Button(
-                                onClick = { StoreLinks.openStorePage(context, app.packageName, app.store, ui.galaxyInstalled) },
-                                modifier = Modifier.fillMaxWidth().height(52.dp),
-                            ) {
-                                Icon(Icons.AutoMirrored.Rounded.OpenInNew, null)
-                                Spacer(Modifier.width(8.dp))
-                                Text(stringResource(R.string.open_store_page))
-                            }
-                            Spacer(Modifier.height(10.dp))
-                            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                                OutlinedButton(onClick = { vm.reviewNext(false) }, modifier = Modifier.weight(1f)) { Text(stringResource(R.string.skip)) }
-                                Button(onClick = { vm.reviewNext(true) }, modifier = Modifier.weight(1f)) { Text(stringResource(R.string.done_next)) }
+                            // While "Check them all" runs, the banner above is the only control.
+                            if (!ui.autoPilot) {
+                                Spacer(Modifier.height(24.dp))
+                                Button(
+                                    onClick = { StoreLinks.openStorePage(context, app.packageName, app.store, ui.galaxyInstalled) },
+                                    modifier = Modifier.fillMaxWidth().height(52.dp),
+                                ) {
+                                    Icon(Icons.AutoMirrored.Rounded.OpenInNew, null)
+                                    Spacer(Modifier.width(8.dp))
+                                    Text(stringResource(R.string.open_store_page))
+                                }
+                                Spacer(Modifier.height(10.dp))
+                                Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                                    OutlinedButton(onClick = { vm.reviewNext(false) }, modifier = Modifier.weight(1f)) { Text(stringResource(R.string.skip)) }
+                                    Button(onClick = { vm.reviewNext(true) }, modifier = Modifier.weight(1f)) { Text(stringResource(R.string.done_next)) }
+                                }
                             }
                         }
                     }
