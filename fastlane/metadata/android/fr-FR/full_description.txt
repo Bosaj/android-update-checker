@@ -1,0 +1,25 @@
+Certaines applis cessent discrètement de se mettre à jour : mise à jour automatique désactivée, applis réparties entre Play Store et Galaxy Store, ou notification qui n’arrive jamais. Update Radar vous les montre et vous emmène directement là où vous les mettez à jour.
+
+★ Un radar de vos applis
+Chaque appli qui a une icône, le store qui l’a installée (Play Store, Galaxy Store, AppGallery, Amazon, F-Droid, autres stores ou installation manuelle) et le nombre de jours depuis sa dernière mise à jour.
+
+★ Tout mettre à jour d’un geste
+Un bouton ouvre la page des mises à jour du Play Store, où son propre bouton « Tout mettre à jour » met tout à jour d’un coup. Le Play Store recherche aussi les nouvelles versions à l’ouverture.
+
+★ À jour, vieillissante, obsolète
+Vous choisissez les seuils (14 et 45 jours par défaut). Filtres par store, recherche et tri.
+
+★ Rappels discrets en Wi-Fi
+Une vérification en arrière-plan tous les 1, 3 ou 7 jours, uniquement en Wi-Fi, et si vous le souhaitez uniquement en charge.
+
+★ Revue guidée
+Passez les applis obsolètes une par une : page du store, Mettre à jour, retour, suivante.
+
+★ Privée par conception
+Aucune autorisation Internet, aucun compte, aucune publicité, aucune statistique. La liste de vos applis ne quitte jamais votre téléphone.
+
+★ 8 langues, dont l’arabe de droite à gauche, à choisir dans l’appli.
+
+Ce qu’elle ne peut pas faire : Android ne permet pas à une appli d’en mettre à jour d’autres. Update Radar repère et oriente ; c’est le store qui fait la mise à jour.
+
+Open source (MIT) : github.com/Bosaj/android-update-checker

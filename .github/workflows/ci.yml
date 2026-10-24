@@ -19,6 +19,10 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      # Refuses a tampered gradle-wrapper.jar before anything runs it.
+      - name: Validate Gradle Wrapper
+        uses: gradle/actions/wrapper-validation@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -28,7 +32,7 @@ jobs:
       - name: Verify Documentation & Governance Standards
         run: |
           echo "Verifying repository governance standards..."
-          for f in README.md LICENSE CONTRIBUTING.md CONTRIBUTORS.md SECURITY.md CHANGELOG.md; do
+          for f in README.md LICENSE CONTRIBUTING.md CONTRIBUTORS.md SECURITY.md CHANGELOG.md docs/PRIVACY.md; do
             test -f "$f" || { echo "::error::$f is missing"; exit 1; }
             echo "✓ $f present"
           done
@@ -45,6 +49,10 @@ jobs:
 
       - name: Build Debug APK
         run: ./gradlew assembleDebug --no-daemon
+
+      # Unsigned here (no keystore in CI); proves R8 and resource shrinking still build.
+      - name: Build Release APK and App Bundle
+        run: ./gradlew assembleRelease bundleRelease --no-daemon
 
       - name: Upload Reports
         if: failure()

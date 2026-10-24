@@ -88,6 +88,22 @@ class RadarTest {
         assertEquals(Store.PLAY, StoreLinks.targetStore(Store.SIDELOADED, galaxyInstalled = true))
     }
 
+    @Test fun samsungPreinstalledAppsGoToGalaxyStore() {
+        assertEquals(Store.GALAXY, StoreLinks.targetStore(Store.PREINSTALLED, galaxyInstalled = true, pkg = "com.samsung.android.calendar"))
+        assertEquals(Store.GALAXY, StoreLinks.targetStore(Store.PREINSTALLED, galaxyInstalled = true, pkg = "com.sec.android.app.camera"))
+        assertEquals(Store.PLAY, StoreLinks.targetStore(Store.PREINSTALLED, galaxyInstalled = true, pkg = "com.google.android.youtube"))
+        assertEquals(Store.PLAY, StoreLinks.targetStore(Store.PREINSTALLED, galaxyInstalled = false, pkg = "com.samsung.android.calendar"))
+    }
+
+    @Test fun sortsByLastUseThenStalest() {
+        val apps = listOf(
+            app("never.old", 90), app("never.new", 50),
+            app("used.today", 60).copy(lastUsed = now), app("used.week", 70).copy(lastUsed = now - 7 * Radar.DAY),
+        )
+        val used = Radar.apply(apps, Radar.Filter(), Radar.Sort.USED, now, 14, 45, emptySet())
+        assertEquals(listOf("used.today", "used.week", "never.old", "never.new"), used.map { it.packageName })
+    }
+
     @Test fun snapshotRoundTripAndFeed() {
         val dir = Files.createTempDirectory("radar").toFile()
         val snap = Snapshot(dir)
