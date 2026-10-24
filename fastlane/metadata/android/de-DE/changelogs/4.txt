@@ -1,0 +1,4 @@
+1.2.0
+• Updates mit einem Tippen: Hilfe einmal einschalten, dann tippt „Alles aktualisieren“ im Play Store auf „Alle aktualisieren“ und bei jeder Galaxy-Store-App auf Aktualisieren
+• Alle veralteten Apps freihändig prüfen
+• Apps, die der Store als aktuell zeigt, heißen „Neueste Version“

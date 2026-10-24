@@ -7,8 +7,9 @@ Update Radar follows [Semantic Versioning](https://semver.org/). Each version ha
 | [v0.1.0](https://github.com/Bosaj/android-update-checker/releases/tag/v0.1.0) | ✅ released | Repository foundation |
 | [v1.0.0](https://github.com/Bosaj/android-update-checker/releases/tag/v1.0.0) | ✅ released | App inventory, staleness, Wi-Fi reminders, store deep links, review flow, recently-updated feed, English/French/Arabic |
 | [v1.0.1](https://github.com/Bosaj/android-update-checker/releases/tag/v1.0.1) | ✅ released | Update all in Play Store, landscape scrolling |
-| v1.1.0 | ✅ ready | Google Play ready (API 36), Check them all, last used, 8 languages with an in-app picker, privacy policy, licences, security hardening |
-| v1.2.0 | 🗓 next | Home-screen widget; optional, opt-in source checks (F-Droid index, GitHub releases with ETag caching and SHA-256 checks) |
+| [v1.1.0](https://github.com/Bosaj/android-update-checker/releases/tag/v1.1.0) | ✅ released | Google Play ready (API 36), Check them all, last used, 8 languages with an in-app picker, privacy policy, licences, security hardening |
+| v1.2.0 | ✅ ready | One-tap updates (Update everything, hands-free Check all), "On latest version" marks |
+| v1.3.0 | 🗓 next | Home-screen widget; optional, opt-in source checks (F-Droid index, GitHub releases with ETag caching and SHA-256 checks) |
 
 ## Rules
 - A fix is a PATCH, a backward-compatible feature is a MINOR, a breaking change is a MAJOR.

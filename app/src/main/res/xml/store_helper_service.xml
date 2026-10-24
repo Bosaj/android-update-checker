@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  One-tap updates. The helper only receives events from Play Store and Galaxy Store, and the service
+  ignores them unless the user has started a run. It reads button labels and view ids, nothing else.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagReportViewIds"
+    android:canPerformGestures="true"
+    android:canRetrieveWindowContent="true"
+    android:description="@string/helper_service_desc"
+    android:isAccessibilityTool="false"
+    android:notificationTimeout="250"
+    android:packageNames="com.android.vending,com.sec.android.app.samsungapps"
+    tools:ignore="UnusedAttribute" />

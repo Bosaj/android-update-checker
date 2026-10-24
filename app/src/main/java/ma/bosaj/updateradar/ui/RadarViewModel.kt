@@ -11,12 +11,16 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import ma.bosaj.updateradar.data.AppChange
+import ma.bosaj.updateradar.data.Freshness
 import ma.bosaj.updateradar.data.InstalledApp
 import ma.bosaj.updateradar.data.Radar
 import ma.bosaj.updateradar.data.RadarRepository
 import ma.bosaj.updateradar.data.RadarSettings
 import ma.bosaj.updateradar.data.Store
 import ma.bosaj.updateradar.data.UsageAccess
+import ma.bosaj.updateradar.helper.HelperTask
+import ma.bosaj.updateradar.helper.StoreHelperService
+import ma.bosaj.updateradar.util.StoreLinks
 import ma.bosaj.updateradar.work.Reminders
 
 enum class Screen { HOME, REVIEW, SETTINGS }
@@ -43,6 +47,8 @@ data class UiState(
     /** A store page was opened by the autopilot and we wait for the user to come back. */
     val awaitingReturn: Boolean = false,
     val usageAccess: Boolean = false,
+    /** The one-tap-updates helper is turned on in Android's accessibility settings. */
+    val helperEnabled: Boolean = false,
 )
 
 class RadarViewModel(app: Application) : AndroidViewModel(app) {
@@ -65,6 +71,7 @@ class RadarViewModel(app: Application) : AndroidViewModel(app) {
                 feed = repo.feed(),
                 galaxyInstalled = repo.galaxyStoreInstalled(),
                 usageAccess = UsageAccess.granted(getApplication()),
+                helperEnabled = StoreHelperService.isEnabled(getApplication()),
                 lastChanges = r.newChanges.size,
                 selected = it.selected?.let { s -> r.apps.firstOrNull { a -> a.packageName == s.packageName } },
             )
@@ -99,6 +106,42 @@ class RadarViewModel(app: Application) : AndroidViewModel(app) {
                 reviewStartedAt = now, autoPilot = auto && queue.isNotEmpty(), awaitingReturn = false,
             )
         }
+    }
+
+    /** Stale apps (not ignored), stalest first. */
+    private fun staleApps(): List<InstalledApp> {
+        val s = settings.value
+        return Radar.apply(_ui.value.apps, Radar.Filter(onlyStale = true), Radar.Sort.STALEST, System.currentTimeMillis(), s.agingAfterDays, s.staleAfterDays, s.ignored)
+    }
+
+    private fun task(a: InstalledApp) = HelperTask(a.packageName, a.label, StoreLinks.targetStore(a.store, _ui.value.galaxyInstalled, a.packageName))
+
+    /**
+     * One tap: Play Store's own "Update all", then every Galaxy Store app that is not fresh, where the
+     * helper presses Update if the store offers one. Returns false when the helper is off.
+     */
+    fun updateEverything(): Boolean {
+        val helper = StoreHelperService.instance ?: return false
+        val s = settings.value
+        val now = System.currentTimeMillis()
+        val galaxy = Radar.apply(_ui.value.apps, Radar.Filter(), Radar.Sort.STALEST, now, s.agingAfterDays, s.staleAfterDays, s.ignored)
+            .filter { Radar.freshness(it, now, s.agingAfterDays, s.staleAfterDays) != Freshness.FRESH }
+            .map(::task)
+            .filter { it.store == Store.GALAXY }
+        return helper.start(listOf(HelperTask(null, "Play Store", Store.PLAY)) + galaxy)
+    }
+
+    /** Hands-free "Check them all": every stale app's store page; the helper presses Update where it appears. */
+    fun checkAllWithHelper(): Boolean {
+        val helper = StoreHelperService.instance ?: return false
+        return helper.start(staleApps().map(::task))
+    }
+
+    fun stopHelper() = StoreHelperService.instance?.stop()
+
+    fun acknowledgeHelper() {
+        StoreHelperService.acknowledge()
+        refresh()
     }
 
     fun startAutoPilot() = _ui.update { it.copy(autoPilot = it.reviewIndex < it.reviewQueue.size, awaitingReturn = false) }

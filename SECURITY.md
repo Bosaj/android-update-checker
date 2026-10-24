@@ -6,8 +6,9 @@ Only the latest minor release gets security fixes. Versions follow [Semantic Ver
 
 | Version | Supported |
 |---|---|
-| 1.1.x | ✅ |
-| 1.0.x | ❌ — please update to 1.1 |
+| 1.2.x | ✅ |
+| 1.1.x | ❌ — please update to 1.2 |
+| 1.0.x | ❌ |
 | < 1.0 | ❌ |
 
 ## Reporting a vulnerability
@@ -21,6 +22,7 @@ Only the latest minor release gets security fixes. Versions follow [Semantic Ver
 
 - **No `INTERNET` permission.** The app cannot send data anywhere. See the [privacy policy](docs/PRIVACY.md).
 - **Few permissions.** Only notifications (optional), plus what WorkManager needs to run on Wi-Fi. The foreground-service permission and service that WorkManager would merge in are removed.
+- **A narrowly scoped accessibility helper (optional).** It is declared for Play Store and Galaxy Store only (`android:packageNames`), ignores every event unless the user started a run, follows a fixed rule (press the store's own Update or "Update all" button), and is off until the user turns it on after an in-app disclosure.
 - **Narrow package visibility.** Only the launcher-app query is declared; no `QUERY_ALL_PACKAGES`.
 - **Nothing exported that needs no permission.** The only exported components are the launcher activity and AndroidX components that Android protects with system permissions (`BIND_JOB_SERVICE`, `DUMP`).
 - **Encrypted backups only.** Cloud backup contains settings only, and only when the backup is end-to-end encrypted.

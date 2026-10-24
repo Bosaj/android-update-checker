@@ -15,7 +15,15 @@ Full texts: [privacy policy](https://github.com/Bosaj/android-update-checker/blo
 | `PACKAGE_USAGE_STATS` | special access, optional, after an in-app disclosure | last-used dates |
 | `RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK`, `ACCESS_NETWORK_STATE` | install | WorkManager reminder on Wi-Fi |
 
+| Accessibility service (`BIND_ACCESSIBILITY_SERVICE`) | turned on by the user, optional, after an in-app disclosure | one-tap updates in Play Store and Galaxy Store only |
+
 `FOREGROUND_SERVICE` and WorkManager's `SystemForegroundService` are removed in the manifest. No `QUERY_ALL_PACKAGES`.
+
+## The one-tap helper
+- Declared for `com.android.vending` and `com.sec.android.app.samsungapps` only, so Android delivers no events from other apps.
+- Ignores every event unless the user started a run, and stops on Stop or at the end of the run.
+- Reads button labels and view ids to find the store's own Update / "Update all" button; keeps only the list of apps the store showed as current.
+- Fixed rules in `StorePage.kt` (unit-tested); no remote configuration, no AI, nothing downloaded.
 
 ## App hardening
 - Exported components: the launcher activity, and AndroidX services and receivers that Android protects with `BIND_JOB_SERVICE` or `DUMP`.

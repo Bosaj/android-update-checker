@@ -181,4 +181,23 @@
     <string name="continue_btn">Continuer</string>
     <string name="not_now">Plus tard</string>
     <string name="sort_used">Utilisées récemment d’abord</string>
+    <string name="helper_service_label">Update Radar — mises à jour en un geste</string>
+    <string name="helper_service_desc">Touche pour vous les boutons Mettre à jour et « Tout mettre à jour » du Play Store et du Galaxy Store, quand vous lancez « Tout mettre à jour » ou « Tout vérifier » dans Update Radar. Il n’agit que dans ces deux stores et seulement pendant un passage que vous lancez. Il ne lit que les boutons des stores et n’envoie rien : Update Radar n’a pas l’autorisation Internet.</string>
+    <string name="helper_overlay">Update Radar · %1$d / %2$d</string>
+    <string name="update_everything">Tout mettre à jour</string>
+    <string name="update_everything_hint">Touche « Tout mettre à jour » dans le Play Store, puis Mettre à jour sur chaque appli Galaxy Store qui en a besoin. Suivez la pastille en bas et touchez Arrêter à tout moment.</string>
+    <string name="helper_turn_on">Activer les mises à jour en un geste</string>
+    <string name="helper_title">Mises à jour en un geste</string>
+    <string name="helper_desc_off">Laissez Update Radar toucher les boutons Mettre à jour des stores pour vous : 250 applis en un geste au lieu de 250.</string>
+    <string name="helper_on">Les mises à jour en un geste sont activées. Désactivez-les à tout moment dans les réglages d’accessibilité d’Android.</string>
+    <string name="helper_disclosure_title">Activer les mises à jour en un geste ?</string>
+    <string name="helper_disclosure">Update Radar utilisera le service d’accessibilité d’Android pour toucher à votre place les boutons Mettre à jour et « Tout mettre à jour » du Play Store et du Galaxy Store.\n\n• Il n’agit que dans ces deux stores, et seulement pendant un passage que vous lancez.\n• Il ne lit que les boutons des stores, rien d’autre à l’écran.\n• Rien n’est envoyé : l’appli n’a pas l’autorisation Internet.\n\nSur l’écran suivant, choisissez Update Radar et activez-le. Si Android indique un paramètre restreint, ouvrez Infos sur l’appli › ⋮ › Autoriser les paramètres restreints, puis réessayez.
+
+Samsung : Applications installées › Update Radar.</string>
+    <string name="helper_open_settings">Ouvrir les réglages d’accessibilité</string>
+    <string name="helper_running">Mise à jour… %1$d sur %2$d</string>
+    <string name="helper_done_title">Terminé</string>
+    <string name="helper_done">Mises à jour lancées : %1$d · Déjà à jour : %2$d · Non vérifiées : %3$d</string>
+    <string name="helper_done_play">Play Store : « Tout mettre à jour » touché.</string>
+    <string name="verified_label">Dernière version · vérifiée %1$s</string>
 </resources>

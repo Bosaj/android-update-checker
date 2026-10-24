@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 when (ui.screen) {
                     Screen.HOME -> HomeScreen(vm, ui, s)
                     Screen.REVIEW -> ReviewScreen(vm, ui)
-                    Screen.SETTINGS -> SettingsScreen(vm, s, ui.galaxyInstalled, ui.usageAccess)
+                    Screen.SETTINGS -> SettingsScreen(vm, s, ui.galaxyInstalled, ui.usageAccess, ui.helperEnabled)
                 }
                 ui.selected?.let { AppSheet(it, s, ui.galaxyInstalled, ui.usageAccess, vm) }
             }

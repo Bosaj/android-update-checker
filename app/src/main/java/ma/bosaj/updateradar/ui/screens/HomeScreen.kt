@@ -28,6 +28,7 @@ import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material.icons.rounded.TouchApp
 import androidx.compose.material.icons.rounded.Update
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -67,18 +68,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ma.bosaj.updateradar.R
 import ma.bosaj.updateradar.data.AppChange
 import ma.bosaj.updateradar.data.InstalledApp
 import ma.bosaj.updateradar.data.Radar
 import ma.bosaj.updateradar.data.RadarSettings
 import ma.bosaj.updateradar.data.Store
+import ma.bosaj.updateradar.helper.StoreHelperService
 import ma.bosaj.updateradar.ui.RadarViewModel
 import ma.bosaj.updateradar.ui.Screen
 import ma.bosaj.updateradar.ui.Tab as RadarTab
 import ma.bosaj.updateradar.ui.UiState
 import ma.bosaj.updateradar.ui.components.AppIcon
 import ma.bosaj.updateradar.ui.components.FreshDot
+import ma.bosaj.updateradar.ui.components.HelperDisclosure
 import ma.bosaj.updateradar.ui.components.RadarScope
 import ma.bosaj.updateradar.ui.components.Stat
 import ma.bosaj.updateradar.ui.components.StoreChip
@@ -173,7 +177,8 @@ fun HomeScreen(vm: RadarViewModel, ui: UiState, s: RadarSettings) {
                     Stat(summary.stale, stringResource(R.string.stale), radar.stale, Modifier.clickable { vm.onlyStale(!ui.filter.onlyStale) })
                     Stat(summary.total, stringResource(R.string.total), MaterialTheme.colorScheme.onSurface)
                 }
-                HonestyCard(ui.galaxyInstalled, summary.stale) { vm.startReview(auto = true) }
+                HelperResult(vm)
+                HonestyCard(vm, ui, summary.stale)
                 TabRow(selectedTabIndex = ui.tab.ordinal, containerColor = MaterialTheme.colorScheme.background) {
                     Tab(ui.tab == RadarTab.APPS, onClick = { vm.tab(RadarTab.APPS) }, text = { Text(stringResource(R.string.tab_apps)) })
                     Tab(ui.tab == RadarTab.UPDATES, onClick = { vm.tab(RadarTab.UPDATES) }, text = {
@@ -212,8 +217,12 @@ fun HomeScreen(vm: RadarViewModel, ui: UiState, s: RadarSettings) {
 
 /** Explains why the app cannot update others, and offers each store's "Update all" page instead of 200 single taps. */
 @Composable
-private fun HonestyCard(galaxyInstalled: Boolean, stale: Int, onCheckAll: () -> Unit) {
+private fun HonestyCard(vm: RadarViewModel, ui: UiState, stale: Int) {
     val context = LocalContext.current
+    val galaxyInstalled = ui.galaxyInstalled
+    var disclose by remember { mutableStateOf(false) }
+    if (disclose) HelperDisclosure { disclose = false }
+    val onCheckAll = { if (!(ui.helperEnabled && vm.checkAllWithHelper())) vm.startReview(auto = true) }
     Card(
         Modifier.fillMaxWidth().padding(16.dp),
         shape = RoundedCornerShape(20.dp),
@@ -226,12 +235,35 @@ private fun HonestyCard(galaxyInstalled: Boolean, stale: Int, onCheckAll: () -> 
                 Text(stringResource(R.string.honesty), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             Spacer(Modifier.height(14.dp))
-            Button(onClick = { StoreLinks.openUpdatesPage(context, Store.PLAY) }, modifier = Modifier.fillMaxWidth().height(52.dp)) {
-                Icon(Icons.Rounded.Update, null, modifier = Modifier.size(20.dp))
-                Spacer(Modifier.width(8.dp))
-                Text(stringResource(R.string.update_all_play), fontWeight = FontWeight.Bold)
+            if (ui.helperEnabled) {
+                // One tap for everything: the helper presses the stores' own Update buttons.
+                Button(onClick = { if (!vm.updateEverything()) disclose = true }, modifier = Modifier.fillMaxWidth().height(56.dp)) {
+                    Icon(Icons.Rounded.TouchApp, null, modifier = Modifier.size(20.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text(stringResource(R.string.update_everything), fontWeight = FontWeight.Bold)
+                }
+                Text(stringResource(R.string.update_everything_hint), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp, bottom = 4.dp))
+                Spacer(Modifier.height(4.dp))
+                OutlinedButton(onClick = { StoreLinks.openUpdatesPage(context, Store.PLAY) }, modifier = Modifier.fillMaxWidth().height(48.dp)) {
+                    Icon(Icons.Rounded.Update, null, modifier = Modifier.size(18.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text(stringResource(R.string.update_all_play))
+                }
+            } else {
+                Button(onClick = { StoreLinks.openUpdatesPage(context, Store.PLAY) }, modifier = Modifier.fillMaxWidth().height(52.dp)) {
+                    Icon(Icons.Rounded.Update, null, modifier = Modifier.size(20.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text(stringResource(R.string.update_all_play), fontWeight = FontWeight.Bold)
+                }
+                Spacer(Modifier.height(8.dp))
+                FilledTonalButton(onClick = { disclose = true }, modifier = Modifier.fillMaxWidth().height(52.dp)) {
+                    Icon(Icons.Rounded.TouchApp, null, modifier = Modifier.size(20.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text(stringResource(R.string.helper_turn_on))
+                }
+                Text(stringResource(R.string.helper_desc_off), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
             }
-            if (galaxyInstalled) {
+            if (galaxyInstalled && !ui.helperEnabled) {
                 Spacer(Modifier.height(8.dp))
                 OutlinedButton(onClick = { StoreLinks.openUpdatesPage(context, Store.GALAXY) }, modifier = Modifier.fillMaxWidth().height(48.dp)) {
                     Text(stringResource(R.string.update_all_galaxy))
@@ -257,6 +289,31 @@ private fun HonestyCard(galaxyInstalled: Boolean, stale: Int, onCheckAll: () -> 
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(top = 6.dp),
             )
+        }
+    }
+}
+
+/** Live progress of a one-tap run, then its summary until dismissed. */
+@Composable
+private fun HelperResult(vm: RadarViewModel) {
+    val p by StoreHelperService.progress.collectAsStateWithLifecycle()
+    if (!p.running && p.finishedAt == 0L) return
+    Card(
+        Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 8.dp),
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer, contentColor = MaterialTheme.colorScheme.onPrimaryContainer),
+    ) {
+        Column(Modifier.padding(16.dp)) {
+            if (p.running) {
+                Text(stringResource(R.string.helper_running, (p.done + 1).coerceAtMost(p.total), p.total), style = MaterialTheme.typography.titleMedium)
+                LinearProgressIndicator(progress = { if (p.total == 0) 0f else p.done.toFloat() / p.total }, modifier = Modifier.fillMaxWidth().padding(vertical = 10.dp))
+                OutlinedButton(onClick = vm::stopHelper) { Text(stringResource(R.string.stop)) }
+            } else {
+                Text(stringResource(R.string.helper_done_title), style = MaterialTheme.typography.titleMedium)
+                if (p.playUpdateAll) Text(stringResource(R.string.helper_done_play), modifier = Modifier.padding(top = 4.dp))
+                Text(stringResource(R.string.helper_done, p.updated, p.upToDate, p.unknown), modifier = Modifier.padding(top = 4.dp))
+                TextButton(onClick = vm::acknowledgeHelper, modifier = Modifier.padding(top = 4.dp)) { Text(stringResource(R.string.close)) }
+            }
         }
     }
 }
@@ -327,7 +384,7 @@ private fun AppRow(app: InstalledApp, now: Long, s: RadarSettings, vm: RadarView
                 FreshDot(f)
                 Spacer(Modifier.width(6.dp))
                 Text(
-                    updatedLabel(app.lastUpdate, now),
+                    updatedLabel(app, now),
                     style = MaterialTheme.typography.bodyMedium,
                     color = freshColor(f),
                 )

@@ -14,6 +14,12 @@ object Radar {
 
     fun isFactoryDate(epochMillis: Long): Boolean = epochMillis < FACTORY_CUTOFF
 
+    /** A store check showing "no newer version" counts for this long (or until the version changes). */
+    const val VERIFIED_DAYS = 30L
+
+    fun isVerified(app: InstalledApp, now: Long): Boolean =
+        app.verifiedAt > 0 && now - app.verifiedAt in 0 until VERIFIED_DAYS * DAY
+
     fun daysSince(epochMillis: Long, now: Long): Long =
         TimeUnit.MILLISECONDS.toDays((now - epochMillis).coerceAtLeast(0))
 
@@ -23,6 +29,8 @@ object Radar {
      * AGING: in between.
      */
     fun freshness(app: InstalledApp, now: Long, agingAfterDays: Int, staleAfterDays: Int): Freshness {
+        // Old but confirmed by its store to be the latest version: nothing to update.
+        if (isVerified(app, now)) return Freshness.FRESH
         val d = daysSince(app.lastUpdate, now)
         return when {
             d >= staleAfterDays -> Freshness.STALE

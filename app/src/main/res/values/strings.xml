@@ -168,4 +168,23 @@
     <string name="continue_btn">Continue</string>
     <string name="not_now">Not now</string>
     <string name="sort_used">Recently used first</string>
+    <string name="helper_service_label">Update Radar — one-tap updates</string>
+    <string name="helper_service_desc">Presses the Update and “Update all” buttons in Play Store and Galaxy Store for you, when you start “Update everything” or “Check all” in Update Radar. It works only inside those two stores and only during a run you start. It reads only the stores’ buttons and sends nothing: Update Radar has no internet permission.</string>
+    <string name="helper_overlay">Update Radar · %1$d / %2$d</string>
+    <string name="update_everything">Update everything</string>
+    <string name="update_everything_hint">Presses “Update all” in Play Store, then Update on every Galaxy Store app that needs it. Watch the pill at the bottom and tap Stop at any time.</string>
+    <string name="helper_turn_on">Turn on one-tap updates</string>
+    <string name="helper_title">One-tap updates</string>
+    <string name="helper_desc_off">Let Update Radar press the stores’ Update buttons for you, so 250 apps take one tap instead of 250.</string>
+    <string name="helper_on">One-tap updates are on. Turn them off in Android’s accessibility settings at any time.</string>
+    <string name="helper_disclosure_title">Turn on one-tap updates?</string>
+    <string name="helper_disclosure">Update Radar will use Android’s accessibility service to press the Update and “Update all” buttons in Play Store and Galaxy Store for you.\n\n• It works only inside those two stores, and only during a run you start.\n• It reads only the stores’ buttons, nothing else on your screen.\n• Nothing is sent anywhere: the app has no internet permission.\n\nOn the next screen choose Update Radar and turn it on. If Android says the setting is restricted, open App info › ⋮ › Allow restricted settings, then try again.
+
+Samsung: Installed apps › Update Radar.</string>
+    <string name="helper_open_settings">Open accessibility settings</string>
+    <string name="helper_running">Updating… %1$d of %2$d</string>
+    <string name="helper_done_title">Done</string>
+    <string name="helper_done">Updates started: %1$d · On latest version: %2$d · Not checked: %3$d</string>
+    <string name="helper_done_play">Play Store: “Update all” pressed.</string>
+    <string name="verified_label">On latest version · checked %1$s</string>
 </resources>
