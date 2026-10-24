@@ -11,6 +11,23 @@ import java.io.File
 class Snapshot(private val dir: File) {
     private val scanFile get() = File(dir, "last_scan.json")
     private val feedFile get() = File(dir, "updates_feed.json")
+    private val checksFile get() = File(dir, "store_checks.json")
+
+    /** package -> (version code, when its store showed that version as the latest). */
+    fun checks(): Map<String, Pair<Long, Long>> = runCatching {
+        if (!checksFile.exists()) return emptyMap()
+        val o = JSONObject(checksFile.readText())
+        o.keys().asSequence().associateWith { k -> o.getJSONObject(k).let { it.getLong("code") to it.getLong("at") } }
+    }.getOrDefault(emptyMap())
+
+    fun saveChecks(add: Map<String, Long>, at: Long) {
+        if (add.isEmpty()) return
+        val merged = checks().toMutableMap()
+        for ((pkg, code) in add) merged[pkg] = code to at
+        val o = JSONObject()
+        for ((pkg, v) in merged) o.put(pkg, JSONObject().put("code", v.first).put("at", v.second))
+        write(checksFile, o.toString())
+    }
 
     fun lastScan(): Map<String, Pair<Long, String>> = runCatching {
         if (!scanFile.exists()) return emptyMap()

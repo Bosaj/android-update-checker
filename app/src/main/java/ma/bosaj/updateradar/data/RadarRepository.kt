@@ -17,7 +17,11 @@ class RadarRepository(context: Context) {
         val s = settings.current()
         val now = System.currentTimeMillis()
         val used = UsageAccess.lastUsed(app, now)
-        val apps = scanner.scan(s.includeSystem).map { a -> used[a.packageName]?.let { a.copy(lastUsed = it) } ?: a }
+        val checks = snapshot.checks()
+        val apps = scanner.scan(s.includeSystem).map { a ->
+            val verified = checks[a.packageName]?.takeIf { it.first == a.versionCode }?.second ?: 0L
+            a.copy(lastUsed = used[a.packageName] ?: a.lastUsed, verifiedAt = verified)
+        }
         val firstScan = !snapshot.hasBaseline()
         val changes = if (firstScan) emptyList() else Radar.changes(snapshot.lastScan(), apps, now)
         snapshot.addToFeed(changes)
@@ -27,6 +31,11 @@ class RadarRepository(context: Context) {
     }
 
     fun feed(): List<AppChange> = snapshot.feed()
+
+    /** Records that the stores showed these apps' installed versions as the latest. */
+    fun markCurrent(packages: Set<String>, at: Long = System.currentTimeMillis()) {
+        snapshot.saveChecks(packages.mapNotNull { p -> scanner.read(p)?.let { p to it.versionCode } }.toMap(), at)
+    }
 
     fun clearFeed() = snapshot.clearFeed()
 

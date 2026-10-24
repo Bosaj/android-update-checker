@@ -168,4 +168,23 @@
     <string name="continue_btn">Devam</string>
     <string name="not_now">Şimdi değil</string>
     <string name="sort_used">Son kullanılanlar önce</string>
+    <string name="helper_service_label">Update Radar — tek dokunuşla güncelleme</string>
+    <string name="helper_service_desc">Update Radar’da “Her şeyi güncelle” ya da “Hepsini denetle”yi başlattığınızda Play Store ve Galaxy Store’daki Güncelle ve “Tümünü güncelle” düğmelerine sizin yerinize dokunur. Yalnızca bu iki mağazada ve yalnızca sizin başlattığınız bir tur sırasında çalışır. Yalnızca mağaza düğmelerini okur ve hiçbir şey göndermez: Update Radar’ın internet izni yok.</string>
+    <string name="helper_overlay">Update Radar · %1$d / %2$d</string>
+    <string name="update_everything">Her şeyi güncelle</string>
+    <string name="update_everything_hint">Play Store’da “Tümünü güncelle”ye, ardından gereken her Galaxy Store uygulamasında Güncelle’ye dokunur. Alttaki şeridi izleyin ve istediğiniz an Durdur’a dokunun.</string>
+    <string name="helper_turn_on">Tek dokunuşla güncellemeyi aç</string>
+    <string name="helper_title">Tek dokunuşla güncelleme</string>
+    <string name="helper_desc_off">Update Radar mağazaların Güncelle düğmelerine sizin yerinize dokunsun: 250 uygulama 250 değil tek dokunuşla.</string>
+    <string name="helper_on">Tek dokunuşla güncelleme açık. Android’in erişilebilirlik ayarlarından istediğiniz zaman kapatabilirsiniz.</string>
+    <string name="helper_disclosure_title">Tek dokunuşla güncelleme açılsın mı?</string>
+    <string name="helper_disclosure">Update Radar, Play Store ve Galaxy Store’daki Güncelle ve “Tümünü güncelle” düğmelerine sizin yerinize dokunmak için Android’in erişilebilirlik hizmetini kullanır.\n\n• Yalnızca bu iki mağazada ve yalnızca sizin başlattığınız bir tur sırasında çalışır.\n• Yalnızca mağaza düğmelerini okur, ekranınızdaki başka hiçbir şeyi okumaz.\n• Hiçbir şey gönderilmez: uygulamanın internet izni yok.\n\nSonraki ekranda Update Radar’ı seçip açın. Android ayarın kısıtlı olduğunu söylerse Uygulama bilgisi › ⋮ › Kısıtlı ayarlara izin ver’i açıp yeniden deneyin.
+
+Samsung: Yüklü uygulamalar › Update Radar.</string>
+    <string name="helper_open_settings">Erişilebilirlik ayarlarını aç</string>
+    <string name="helper_running">Güncelleniyor… %1$d / %2$d</string>
+    <string name="helper_done_title">Bitti</string>
+    <string name="helper_done">Başlatılan güncellemeler: %1$d · Son sürümde: %2$d · Denetlenmedi: %3$d</string>
+    <string name="helper_done_play">Play Store: “Tümünü güncelle”ye dokunuldu.</string>
+    <string name="verified_label">Son sürüm · denetlendi: %1$s</string>
 </resources>

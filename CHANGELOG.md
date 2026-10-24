@@ -4,6 +4,17 @@ All notable changes to this project are documented here. Format: [Keep a Changel
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-10-24
+### Added
+- **One-tap updates** (opt-in): a deterministic accessibility helper that presses the stores' own buttons for you, so 250+ apps take one tap instead of 250 store pages.
+  - **Update everything** presses Play Store's "Update all", then opens every Galaxy Store app that is not fresh and presses Update where Galaxy Store offers one.
+  - **Check all** visits every stale app's store page hands-free and presses Update where it appears.
+  - A floating pill shows the progress with a Stop button; the home screen shows the summary (updates started, already on the latest version, not checked).
+- **On latest version**: when a store shows an app's installed version as the latest, Update Radar remembers it for 30 days (or until the version changes), and that app stops counting as stale.
+
+### Privacy
+- The helper only receives events from Play Store and Galaxy Store, ignores them unless you started a run, reads only button labels and view ids, and has nothing to send them with (still no `INTERNET` permission). It is off until you turn it on after an in-app disclosure, and can be turned off in Android's accessibility settings at any time.
+
 ## [1.1.0] - 2026-10-24
 ### Added
 - **Check them all**: an autopilot that opens every stale app's own store page in turn. Each return from the store opens the next one, and the end screen counts how many apps actually updated. Started from the home card ("Check all N in their stores") or the review screen.

@@ -1,6 +1,6 @@
 # Privacy Policy — Update Radar
 
-**Effective date:** 24 October 2026 · **App:** Update Radar (`ma.bosaj.updateradar`) · **Developer:** Oussama EL HADJI ([@Bosaj](https://github.com/Bosaj))
+**Effective date:** 24 October 2026 (updated for version 1.2.0) · **App:** Update Radar (`ma.bosaj.updateradar`) · **Developer:** Oussama EL HADJI ([@Bosaj](https://github.com/Bosaj))
 
 [English](#english) · [Français](#français) · [العربية](#العربية)
 
@@ -27,6 +27,14 @@ On the phone only, in the app's private storage:
 **Nothing.** The app has no `INTERNET` permission, so it cannot send data anywhere. It has no account, no ads, no analytics, no crash reporting and no third-party SDKs that collect data.
 
 When you tap a store or web link, Android opens that store or your browser, and their own privacy policies apply from then on.
+
+### One-tap updates (optional accessibility helper)
+If you turn on one-tap updates, Update Radar uses Android's accessibility service to press the Update and "Update all" buttons in Play Store and Galaxy Store for you.
+- It receives screen information **only from Play Store and Galaxy Store** (it is configured for those two apps only).
+- It ignores everything unless **you started a run** ("Update everything" or "Check all"), and stops when the run ends or you tap Stop.
+- It reads only the stores' **button labels and view ids** to find the Update button, and remembers which apps the store showed as up to date. It does not read or keep anything else.
+- Nothing is sent anywhere: the app has no internet permission.
+- It is off by default. You turn it on in Android's accessibility settings after an in-app explanation, and can turn it off there at any time.
 
 ### Backups
 If Android backup is on, your **settings** can be included in your own Google backup, and only when that backup is end-to-end encrypted. The scan of your apps is not backed up.
@@ -60,6 +68,8 @@ Update Radar montre les applications de votre téléphone qui n’ont pas été 
 
 **Sauvegardes :** si la sauvegarde Android est activée, seuls vos **réglages** peuvent être inclus dans votre propre sauvegarde Google, et seulement si elle est chiffrée de bout en bout.
 
+**Mises à jour en un geste (facultatif) :** si vous les activez, Update Radar utilise le service d’accessibilité d’Android pour toucher à votre place les boutons Mettre à jour et « Tout mettre à jour » du Play Store et du Galaxy Store. Il ne reçoit des informations que de ces deux stores, n’agit que pendant un passage que vous lancez, ne lit que les boutons, et n’envoie rien. Désactivable à tout moment dans les réglages d’accessibilité.
+
 **Autorisations :** notifications (rappels facultatifs, désactivables à tout moment) ; démarrage, maintien en éveil et état du réseau (utilisés par WorkManager pour la vérification en Wi-Fi, sans envoi de données).
 
 **Enfants et droits :** l’appli ne s’adresse pas aux enfants et ne collecte aucune donnée personnelle. Vider le stockage de l’appli ou la désinstaller supprime toutes ses données.
@@ -81,6 +91,8 @@ Update Radar montre les applications de votre téléphone qui n’ont pas été 
 **ما يغادر الهاتف:** **لا شيء.** ليس للتطبيق إذن `INTERNET`، ولا حساب، ولا إعلانات، ولا إحصاءات، ولا تقارير أعطال، ولا مكتبات خارجية تجمع البيانات. عند فتح رابط متجر أو صفحة ويب تنطبق سياسة خصوصية ذلك المتجر أو المتصفح.
 
 **النسخ الاحتياطي:** إذا كان النسخ الاحتياطي في أندرويد مفعّلًا، قد تُضمَّن **إعداداتك** فقط في نسختك الاحتياطية على Google، وبشرط أن تكون مشفّرة من طرف إلى طرف.
+
+**التحديث بضغطة واحدة (اختياري):** إذا فعّلته، يستخدم التطبيق خدمة إمكانية الوصول في أندرويد ليضغط عنك زرَّي «تحديث» و«تحديث الكل» في متجر Play ومتجر Galaxy. لا يتلقى معلومات إلا من هذين المتجرين، ولا يعمل إلا أثناء جولة تبدؤها أنت، ولا يقرأ إلا الأزرار، ولا يرسل شيئًا. يمكن إيقافه في أي وقت من إعدادات إمكانية الوصول.
 
 **الأذونات:** الإشعارات (تذكيرات اختيارية يمكن إيقافها في أي وقت)؛ والتشغيل عند الإقلاع وإبقاء الجهاز نشطًا وحالة الشبكة (يستخدمها WorkManager للفحص عبر الواي فاي، دون إرسال أي بيانات).
 

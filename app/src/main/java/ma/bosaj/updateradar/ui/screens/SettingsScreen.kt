@@ -60,13 +60,15 @@ import ma.bosaj.updateradar.R
 import ma.bosaj.updateradar.data.RadarSettings
 import ma.bosaj.updateradar.data.Store
 import ma.bosaj.updateradar.data.UsageAccess
+import ma.bosaj.updateradar.helper.StoreHelperService
 import ma.bosaj.updateradar.ui.RadarViewModel
 import ma.bosaj.updateradar.ui.Screen
+import ma.bosaj.updateradar.ui.components.HelperDisclosure
 import ma.bosaj.updateradar.util.StoreLinks
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(vm: RadarViewModel, s: RadarSettings, galaxyInstalled: Boolean, usageAccess: Boolean) {
+fun SettingsScreen(vm: RadarViewModel, s: RadarSettings, galaxyInstalled: Boolean, usageAccess: Boolean, helperEnabled: Boolean) {
     val context = LocalContext.current
     Scaffold(
         topBar = {
@@ -106,6 +108,7 @@ fun SettingsScreen(vm: RadarViewModel, s: RadarSettings, galaxyInstalled: Boolea
                 Toggle(stringResource(R.string.include_system), stringResource(R.string.include_system_desc), s.includeSystem, vm::setIncludeSystem)
                 if (s.ignored.isNotEmpty()) Text(pluralStringResource(R.plurals.ignored_count, s.ignored.size, s.ignored.size), color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
+            HelperGroup(helperEnabled)
             UsageGroup(usageAccess)
             Group(stringResource(R.string.stores)) {
                 Text(stringResource(R.string.stores_desc), color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -190,6 +193,21 @@ private fun LanguageOption(name: String, selected: Boolean, onPick: () -> Unit) 
         RadioButton(selected, onClick = null)
         Spacer(Modifier.width(12.dp))
         Text(name, style = MaterialTheme.typography.bodyLarge)
+    }
+}
+
+@Composable
+private fun HelperGroup(enabled: Boolean) {
+    val context = LocalContext.current
+    var disclose by remember { mutableStateOf(false) }
+    if (disclose) HelperDisclosure { disclose = false }
+    Group(stringResource(R.string.helper_title)) {
+        Text(stringResource(if (enabled) R.string.helper_on else R.string.helper_desc_off), color = MaterialTheme.colorScheme.onSurfaceVariant)
+        if (enabled) {
+            OutlinedButton(onClick = { StoreLinks.launchFirst(context, StoreHelperService.settingsIntents(context)) }) { Text(stringResource(R.string.helper_open_settings)) }
+        } else {
+            FilledTonalButton(onClick = { disclose = true }) { Text(stringResource(R.string.helper_turn_on)) }
+        }
     }
 }
 

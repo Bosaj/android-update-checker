@@ -216,4 +216,23 @@
     <string name="continue_btn">متابعة</string>
     <string name="not_now">ليس الآن</string>
     <string name="sort_used">المستخدمة مؤخرًا أولًا</string>
+    <string name="helper_service_label">رادار التحديثات — تحديث بضغطة واحدة</string>
+    <string name="helper_service_desc">يضغط عنك زرَّي «تحديث» و«تحديث الكل» في متجر Play ومتجر Galaxy، عندما تبدأ «حدّث كل شيء» أو «افحص الكل» في رادار التحديثات. لا يعمل إلا داخل هذين المتجرين وأثناء جولة تبدؤها أنت. لا يقرأ إلا أزرار المتجر ولا يرسل شيئًا: ليس لرادار التحديثات إذن إنترنت.</string>
+    <string name="helper_overlay">رادار التحديثات · %1$d / %2$d</string>
+    <string name="update_everything">حدّث كل شيء</string>
+    <string name="update_everything_hint">يضغط «تحديث الكل» في متجر Play، ثم «تحديث» على كل تطبيق في متجر Galaxy يحتاجه. تابع الشريط في الأسفل واضغط «إيقاف» متى شئت.</string>
+    <string name="helper_turn_on">تفعيل التحديث بضغطة واحدة</string>
+    <string name="helper_title">التحديث بضغطة واحدة</string>
+    <string name="helper_desc_off">دع رادار التحديثات يضغط أزرار «تحديث» في المتاجر عنك، فتُحدَّث ٢٥٠ تطبيقًا بضغطة واحدة بدل ٢٥٠ ضغطة.</string>
+    <string name="helper_on">التحديث بضغطة واحدة مفعّل. يمكنك إيقافه من إعدادات إمكانية الوصول في أندرويد في أي وقت.</string>
+    <string name="helper_disclosure_title">تفعيل التحديث بضغطة واحدة؟</string>
+    <string name="helper_disclosure">سيستخدم رادار التحديثات خدمة إمكانية الوصول في أندرويد ليضغط عنك زرَّي «تحديث» و«تحديث الكل» في متجر Play ومتجر Galaxy.\n\n• لا يعمل إلا داخل هذين المتجرين، وأثناء جولة تبدؤها أنت فقط.\n• لا يقرأ إلا أزرار المتجر، ولا شيء آخر على شاشتك.\n• لا يُرسَل أي شيء: ليس للتطبيق إذن إنترنت.\n\nفي الشاشة التالية اختر «رادار التحديثات» وفعّله. إذا قال أندرويد إن الإعداد مقيّد، افتح معلومات التطبيق › ⋮ › السماح بالإعدادات المقيّدة، ثم حاول مجددًا.
+
+سامسونج: التطبيقات المثبتة › رادار التحديثات.</string>
+    <string name="helper_open_settings">فتح إعدادات إمكانية الوصول</string>
+    <string name="helper_running">جارٍ التحديث… %1$d من %2$d</string>
+    <string name="helper_done_title">تم</string>
+    <string name="helper_done">تحديثات بدأت: %1$d · على آخر إصدار: %2$d · لم تُفحص: %3$d</string>
+    <string name="helper_done_play">متجر Play: ضُغط «تحديث الكل».</string>
+    <string name="verified_label">على آخر إصدار · فُحص %1$s</string>
 </resources>

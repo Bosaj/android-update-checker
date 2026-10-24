@@ -1,0 +1,4 @@
+1.2.0
+• Mises à jour en un geste : activez l’aide une fois, puis « Tout mettre à jour » touche pour vous « Tout mettre à jour » du Play Store et Mettre à jour sur chaque appli Galaxy Store
+• Vérifiez toutes les applis anciennes sans les mains
+• Les applis que le store montre à jour passent en « Dernière version »
