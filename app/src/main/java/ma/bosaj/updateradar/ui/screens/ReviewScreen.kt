@@ -174,7 +174,7 @@ fun ReviewScreen(vm: RadarViewModel, ui: UiState) {
                             Text(app.label, style = MaterialTheme.typography.headlineSmall, textAlign = TextAlign.Center)
                             Spacer(Modifier.height(6.dp))
                             Text(
-                                updatedLabel(app.lastUpdate, System.currentTimeMillis()),
+                                updatedLabel(app, System.currentTimeMillis()),
                                 color = LocalRadar.current.stale,
                             )
                             Spacer(Modifier.height(8.dp))

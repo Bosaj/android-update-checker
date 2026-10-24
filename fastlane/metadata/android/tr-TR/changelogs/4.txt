@@ -1,0 +1,4 @@
+1.2.0
+• Tek dokunuşla güncelleme: yardımcıyı bir kez açın, “Her şeyi güncelle” Play Store’da Tümünü güncelle’ye ve her Galaxy Store uygulamasında Güncelle’ye sizin yerinize dokunsun
+• Tüm eski uygulamaları elle uğraşmadan denetleyin
+• Mağazanın güncel gösterdiği uygulamalar “Son sürüm” olarak işaretlenir

@@ -15,11 +15,18 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.TouchApp
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -37,6 +44,7 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -52,7 +60,9 @@ import ma.bosaj.updateradar.data.Freshness
 import ma.bosaj.updateradar.data.InstalledApp
 import ma.bosaj.updateradar.data.Radar
 import ma.bosaj.updateradar.data.Store
+import ma.bosaj.updateradar.helper.StoreHelperService
 import ma.bosaj.updateradar.ui.theme.LocalRadar
+import ma.bosaj.updateradar.util.StoreLinks
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
@@ -169,6 +179,34 @@ fun localCount(n: Int): String = String.format(LocalConfiguration.current.locale
 fun updatedLabel(lastUpdate: Long, now: Long): String =
     if (Radar.isFactoryDate(lastUpdate)) stringResource(R.string.factory_version)
     else stringResource(R.string.updated_ago, daysAgo(Radar.daysSince(lastUpdate, now)))
+
+/** Like [updatedLabel], but says so when the store confirmed this version is the latest. */
+@Composable
+fun updatedLabel(app: InstalledApp, now: Long): String =
+    if (Radar.isVerified(app, now)) stringResource(R.string.verified_label, daysAgo(Radar.daysSince(app.verifiedAt, now)))
+    else updatedLabel(app.lastUpdate, now)
+
+/**
+ * Prominent disclosure shown before Android's accessibility settings open (Google Play requires it
+ * for apps that use the AccessibilityService API without being accessibility tools).
+ */
+@Composable
+fun HelperDisclosure(onDismiss: () -> Unit) {
+    val context = LocalContext.current
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        icon = { Icon(Icons.Rounded.TouchApp, null) },
+        title = { Text(stringResource(R.string.helper_disclosure_title)) },
+        text = { Text(stringResource(R.string.helper_disclosure), modifier = Modifier.verticalScroll(rememberScrollState())) },
+        confirmButton = {
+            TextButton(onClick = {
+                onDismiss()
+                StoreLinks.launchFirst(context, StoreHelperService.settingsIntents(context))
+            }) { Text(stringResource(R.string.helper_open_settings)) }
+        },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.not_now)) } },
+    )
+}
 
 @Composable
 fun daysAgo(days: Long): String = when (days) {

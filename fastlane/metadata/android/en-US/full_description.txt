@@ -3,6 +3,9 @@ Some apps quietly stop updating: auto-update is off, apps are split between Play
 ★ A radar of your apps
 Every app with an icon, the store that installed it (Play Store, Galaxy Store, AppGallery, Amazon, F-Droid, other stores or installed by hand) and the days since its last update. Apps drift to the outer ring as they age.
 
+★ One-tap updates (optional)
+Turn on the helper once, and "Update everything" presses Play Store's own "Update all" and then every Galaxy Store app's Update button for you, with a progress pill and a Stop button. It works only inside those two stores and only during a run you start.
+
 ★ Update all in one tap
 One button opens Play Store's Updates page, where its own "Update all" button updates everything at once. Opening it also makes Play Store check for new versions. No more 200 store pages one by one.
 

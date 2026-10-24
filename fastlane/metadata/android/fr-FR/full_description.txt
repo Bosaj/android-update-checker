@@ -3,6 +3,9 @@ Certaines applis cessent discrètement de se mettre à jour : mise à jour autom
 ★ Un radar de vos applis
 Chaque appli qui a une icône, le store qui l’a installée (Play Store, Galaxy Store, AppGallery, Amazon, F-Droid, autres stores ou installation manuelle) et le nombre de jours depuis sa dernière mise à jour.
 
+★ Mises à jour en un geste (facultatif)
+Activez l’aide une fois : « Tout mettre à jour » touche pour vous « Tout mettre à jour » du Play Store puis Mettre à jour sur chaque appli Galaxy Store, avec une pastille de progression et un bouton Arrêter. Elle n’agit que dans ces deux stores et pendant un passage que vous lancez.
+
 ★ Tout mettre à jour d’un geste
 Un bouton ouvre la page des mises à jour du Play Store, où son propre bouton « Tout mettre à jour » met tout à jour d’un coup. Le Play Store recherche aussi les nouvelles versions à l’ouverture.
 

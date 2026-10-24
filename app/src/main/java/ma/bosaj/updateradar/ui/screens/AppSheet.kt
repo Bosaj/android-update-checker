@@ -72,7 +72,7 @@ fun AppSheet(app: InstalledApp, s: RadarSettings, galaxyInstalled: Boolean, usag
             Row(verticalAlignment = Alignment.CenterVertically) {
                 FreshDot(f)
                 Spacer(Modifier.width(8.dp))
-                Text(updatedLabel(app.lastUpdate, now), color = freshColor(f), style = MaterialTheme.typography.titleMedium)
+                Text(updatedLabel(app, now), color = freshColor(f), style = MaterialTheme.typography.titleMedium)
             }
             Spacer(Modifier.height(12.dp))
             Fact(stringResource(R.string.version), "${app.versionName} (${app.versionCode})")

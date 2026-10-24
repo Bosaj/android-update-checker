@@ -7,7 +7,7 @@
 [![Latest release](https://img.shields.io/github/v/release/Bosaj/android-update-checker?sort=semver)](https://github.com/Bosaj/android-update-checker/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-**Status:** v1.1.0 · **Download:** [latest APK](https://github.com/Bosaj/android-update-checker/releases/latest) · **Android:** 8.0+ (targets Android 16, API 36) · **Idea:** #20 in the owner's ideas backlog · **Author:** Oussama EL HADJI
+**Status:** v1.2.0 · **Download:** [latest APK](https://github.com/Bosaj/android-update-checker/releases/latest) · **Android:** 8.0+ (targets Android 16, API 36) · **Idea:** #20 in the owner's ideas backlog · **Author:** Oussama EL HADJI
 
 <p align="center">
   <img src="docs/home.png" width="190" alt="Radar home screen" />
@@ -32,7 +32,8 @@ On Galaxy phones some apps do not update for weeks: auto-update is off, the apps
 
 - **Radar of your apps** — every app with a launcher icon, the store that installed it (Play Store, Galaxy Store, AppGallery, Amazon, F-Droid, other, installed by hand) and the days since its last update. Apps drift to the outer ring as they age.
 - **Update all in one tap** — opens Play Store's *Manage apps & device › Updates* page, where Play's own **Update all** button updates every app that has a newer version. Opening that page also makes Play Store check for new versions.
-- **Check them all** — for everything else. The autopilot opens each stale app's own store page in turn (Play Store, or Galaxy Store for Samsung apps); every time you come back, the next page opens by itself. The store shows **Update** where a new version exists. At the end you see how many apps actually updated.
+- **One-tap updates (opt-in)** — turn on Update Radar's helper once, and **Update everything** presses Play Store's "Update all" and then every Galaxy Store app's Update button for you, with a floating progress pill and a Stop button. **Check all** walks through every stale app the same way, hands-free. Apps the store shows as current are marked **On latest version** and leave the stale list.
+- **Check them all** — without the helper, the same walk with one Back press per app. The autopilot opens each stale app's own store page in turn (Play Store, or Galaxy Store for Samsung apps); every time you come back, the next page opens by itself. The store shows **Update** where a new version exists. At the end you see how many apps actually updated.
 - **Fresh / aging / stale** — your own thresholds (default 14 and 45 days). Filter by store or "only stale", search, sort by stalest, newest, name or last use.
 - **Last used (optional)** — with Android's Usage access, which you grant after an in-app explanation, see when you last opened each app, so you can focus on the old apps you really use. The dates stay on the phone.
 - **Reminders on Wi-Fi** — a WorkManager job every 1, 3 or 7 days, only on an unmetered network (optionally only while charging).
@@ -41,7 +42,7 @@ On Galaxy phones some apps do not update for weeks: auto-update is off, the apps
 
 ## What it cannot do (honestly)
 
-Android does not let a normal app install or update another app, and there is no public API that tells an app whether someone else's app has an update. Play's In-App Updates API only works for an app's own updates. So Update Radar **finds and routes**: it shows what has gone quiet and opens the store page where *you* tap Update. Root is not used.
+Android does not let a normal app install or update another app on its own, and there is no public API that tells an app whether someone else's app has an update. Play's In-App Updates API only works for an app's own updates. So Update Radar **finds and routes**: it shows what has gone quiet and opens the store page where the Update button is. With one-tap updates on, its helper presses that button for you, the same way you would; the store does the update. Root is not used, and Samsung's "sleeping apps" setting does not stop stores from updating apps.
 
 "Stale" means *no update for N days*, not *an update is waiting*. Many apps simply have no newer version: on a test Galaxy S23+, 80 Play-installed apps had not updated for 45 days, and Play Store had 13 updates for them. **Update all** installs those 13; **Check them all** shows each remaining app in its store so you can see for yourself.
 
@@ -55,6 +56,7 @@ No `INTERNET` permission, no account, no ads, no analytics, no third-party SDKs 
 |---|---|
 | `POST_NOTIFICATIONS` | optional reminders |
 | `PACKAGE_USAGE_STATS` | optional "last used" dates; special access you grant in Android settings after an in-app disclosure |
+| Accessibility service (`BIND_ACCESSIBILITY_SERVICE`) | optional one-tap updates; you turn it on in Android settings after an in-app disclosure; limited to Play Store and Galaxy Store, active only during a run you start |
 | `RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK`, `ACCESS_NETWORK_STATE` | WorkManager runs the reminder on Wi-Fi |
 
 The foreground-service permission WorkManager would add is removed. Release builds are minified with R8, signed with APK signature v2 and v3, and back up only settings, only to an end-to-end encrypted backup.
@@ -96,6 +98,8 @@ data/Snapshot.kt      previous scan + updates feed (JSON)
 data/Settings.kt      DataStore preferences
 work/Reminders.kt     WorkManager job on unmetered network + notification
 util/StoreLinks.kt    store deep links with fallbacks, Updates pages, Samsung routing
+helper/StorePage.kt   pure rules that read a store screen (exact button labels in 8 languages, Galaxy Store view ids; unit-tested)
+helper/StoreHelperService.kt  opt-in accessibility helper: runs, progress pill, presses the stores' Update buttons
 ui/…                  Jetpack Compose (Material 3): radar, list, detail sheet, review + autopilot, settings, onboarding
 ```
 
@@ -110,7 +114,8 @@ Kotlin 2.2, AGP 8.13, Gradle 8.14, Jetpack Compose (BOM 2025.12), AppCompat per-
 - v1.0.0 — inventory, Wi-Fi reminders, store deep links, review flow, recently-updated feed ✅
 - v1.0.1 — Update all in Play Store, landscape scrolling ✅
 - v1.1.0 — Google Play ready (API 36), Check them all, last used, 8 languages, privacy and security hardening ✅
-- v1.2.0 — home-screen widget; optional, opt-in source checks (F-Droid index, GitHub releases) — *next*
+- v1.2.0 — one-tap updates (Update everything, hands-free Check all), "On latest version" marks ✅
+- v1.3.0 — home-screen widget; optional, opt-in source checks (F-Droid index, GitHub releases) — *next*
 
 ## For LLM agents & contributors
 

@@ -1,0 +1,4 @@
+1.2.0
+• Atualizar com um toque: ative a ajuda uma vez e “Atualizar tudo de uma vez” toca por você em “Atualizar tudo” na Play Store e em Atualizar em cada app da Galaxy Store
+• Verifique todos os apps antigos sem as mãos
+• Apps que a loja mostra em dia passam a “Última versão”

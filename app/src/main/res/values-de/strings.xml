@@ -168,4 +168,23 @@
     <string name="continue_btn">Weiter</string>
     <string name="not_now">Nicht jetzt</string>
     <string name="sort_used">Zuletzt genutzt zuerst</string>
+    <string name="helper_service_label">Update Radar – Updates mit einem Tippen</string>
+    <string name="helper_service_desc">Tippt für dich auf Aktualisieren und „Alle aktualisieren“ im Play Store und Galaxy Store, wenn du in Update Radar „Alles aktualisieren“ oder „Alle prüfen“ startest. Es wirkt nur in diesen beiden Stores und nur während eines Durchlaufs, den du startest. Es liest nur die Store-Buttons und sendet nichts: Update Radar hat keine Internetberechtigung.</string>
+    <string name="helper_overlay">Update Radar · %1$d / %2$d</string>
+    <string name="update_everything">Alles aktualisieren</string>
+    <string name="update_everything_hint">Tippt im Play Store auf „Alle aktualisieren“ und dann bei jeder Galaxy-Store-App, die es braucht, auf Aktualisieren. Folge der Leiste unten und tippe jederzeit auf Stopp.</string>
+    <string name="helper_turn_on">Updates mit einem Tippen einschalten</string>
+    <string name="helper_title">Updates mit einem Tippen</string>
+    <string name="helper_desc_off">Lass Update Radar die Aktualisieren-Buttons der Stores für dich tippen: 250 Apps mit einem Tippen statt 250.</string>
+    <string name="helper_on">Updates mit einem Tippen sind eingeschaltet. Schalte sie jederzeit in den Bedienungshilfen von Android aus.</string>
+    <string name="helper_disclosure_title">Updates mit einem Tippen einschalten?</string>
+    <string name="helper_disclosure">Update Radar nutzt den Bedienungshilfen-Dienst von Android, um für dich auf Aktualisieren und „Alle aktualisieren“ im Play Store und Galaxy Store zu tippen.\n\n• Es wirkt nur in diesen beiden Stores und nur während eines Durchlaufs, den du startest.\n• Es liest nur die Store-Buttons, sonst nichts auf deinem Bildschirm.\n• Nichts wird gesendet: Die App hat keine Internetberechtigung.\n\nWähle auf dem nächsten Bildschirm Update Radar und schalte es ein. Meldet Android eine eingeschränkte Einstellung, öffne App-Info › ⋮ › Eingeschränkte Einstellungen zulassen und versuche es erneut.
+
+Samsung: Installierte Apps › Update Radar.</string>
+    <string name="helper_open_settings">Bedienungshilfen öffnen</string>
+    <string name="helper_running">Aktualisiere… %1$d von %2$d</string>
+    <string name="helper_done_title">Fertig</string>
+    <string name="helper_done">Gestartete Updates: %1$d · Neueste Version: %2$d · Nicht geprüft: %3$d</string>
+    <string name="helper_done_play">Play Store: „Alle aktualisieren“ getippt.</string>
+    <string name="verified_label">Neueste Version · geprüft %1$s</string>
 </resources>
