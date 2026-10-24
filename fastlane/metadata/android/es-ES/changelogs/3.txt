@@ -1,0 +1,6 @@
+1.1.0
+• Actualizar todo en Play Store de un toque
+• Elige el idioma de la app en Ajustes: 8 idiomas, árabe de derecha a izquierda
+• Lista para Android 16; funciona en horizontal y en tabletas
+• Política de privacidad y licencias en Ajustes › Acerca de
+• Menos permisos y más seguridad

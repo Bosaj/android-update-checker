@@ -3,13 +3,13 @@ package ma.bosaj.updateradar
 import android.Manifest
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.getValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.Lifecycle
@@ -24,7 +24,7 @@ import ma.bosaj.updateradar.ui.screens.ReviewScreen
 import ma.bosaj.updateradar.ui.screens.SettingsScreen
 import ma.bosaj.updateradar.ui.theme.UpdateRadarTheme
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     private val vm: RadarViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,9 +55,9 @@ class MainActivity : ComponentActivity() {
                 when (ui.screen) {
                     Screen.HOME -> HomeScreen(vm, ui, s)
                     Screen.REVIEW -> ReviewScreen(vm, ui)
-                    Screen.SETTINGS -> SettingsScreen(vm, s, ui.galaxyInstalled)
+                    Screen.SETTINGS -> SettingsScreen(vm, s, ui.galaxyInstalled, ui.usageAccess)
                 }
-                ui.selected?.let { AppSheet(it, s, ui.galaxyInstalled, vm) }
+                ui.selected?.let { AppSheet(it, s, ui.galaxyInstalled, ui.usageAccess, vm) }
             }
         }
     }

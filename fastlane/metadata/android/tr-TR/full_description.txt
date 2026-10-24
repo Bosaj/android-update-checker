@@ -1,0 +1,12 @@
+Bazı uygulamalar sessizce güncellenmeyi bırakır: otomatik güncelleme kapalıdır, uygulamalar Play Store ile Galaxy Store arasında dağılmıştır ya da bildirim hiç gelmez. Update Radar bunları gösterir ve sizi doğrudan güncelleyeceğiniz yere götürür.
+
+★ Uygulamalarınızın radarı: simgesi olan her uygulama, onu yükleyen mağaza ve son güncellemeden bu yana geçen gün sayısı.
+★ Tek dokunuşla tümünü güncelle: bir düğme Play Store’un güncellemeler sayfasını açar; oradaki “Tümünü güncelle” her şeyi bir kerede günceller.
+★ Güncel, eskiyor, eski: sınırları siz seçersiniz; filtre, arama ve sıralama.
+★ Wi-Fi’de sessiz hatırlatmalar: 1, 3 ya da 7 günde bir, yalnızca Wi-Fi’de.
+★ Tasarımı gereği gizli: internet izni yok, hesap yok, reklam ve istatistik yok.
+★ Sağdan sola Arapça dahil 8 dil, uygulama içinden seçilebilir.
+
+Yapamadığı şey: Android bir uygulamanın diğerlerini güncellemesine izin vermez. Update Radar bulur ve yönlendirir; güncellemeyi mağaza yapar.
+
+Açık kaynak (MIT): github.com/Bosaj/android-update-checker

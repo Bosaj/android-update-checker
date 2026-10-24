@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -23,6 +24,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.OpenInNew
 import androidx.compose.material.icons.automirrored.rounded.Sort
 import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
@@ -34,6 +36,7 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -55,6 +58,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -78,6 +82,7 @@ import ma.bosaj.updateradar.ui.components.FreshDot
 import ma.bosaj.updateradar.ui.components.RadarScope
 import ma.bosaj.updateradar.ui.components.Stat
 import ma.bosaj.updateradar.ui.components.StoreChip
+import ma.bosaj.updateradar.ui.components.daysAgo
 import ma.bosaj.updateradar.ui.components.updatedLabel
 import ma.bosaj.updateradar.ui.components.freshColor
 import ma.bosaj.updateradar.ui.components.localCount
@@ -133,13 +138,16 @@ fun HomeScreen(vm: RadarViewModel, ui: UiState, s: RadarSettings) {
         containerColor = MaterialTheme.colorScheme.background,
     ) { pad ->
         LazyColumn(
-            Modifier.fillMaxSize().padding(pad),
+            // Centred and capped on tablets and in landscape, full width on phones.
+            Modifier.fillMaxSize().padding(pad).wrapContentWidth().widthIn(max = 720.dp),
             contentPadding = PaddingValues(bottom = 96.dp),
         ) {
             item {
                 if (ui.loading) LinearProgressIndicator(Modifier.fillMaxWidth())
                 Box(Modifier.fillMaxWidth().padding(horizontal = 40.dp, vertical = 8.dp), contentAlignment = Alignment.Center) {
-                    RadarScope(ui.apps.filter { it.packageName !in s.ignored }, now, s.agingAfterDays, s.staleAfterDays, Modifier.widthIn(max = 320.dp).fillMaxWidth()) {
+                    // In landscape the radar is capped to about half the screen height, so the actions stay in view.
+                    val radarMax = minOf(320, LocalConfiguration.current.screenHeightDp * 55 / 100).dp
+                    RadarScope(ui.apps.filter { it.packageName !in s.ignored }, now, s.agingAfterDays, s.staleAfterDays, Modifier.widthIn(max = radarMax).fillMaxWidth()) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text(
                                 localCount(summary.stale),
@@ -153,7 +161,8 @@ fun HomeScreen(vm: RadarViewModel, ui: UiState, s: RadarSettings) {
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 textAlign = TextAlign.Center,
-                                modifier = Modifier.width(140.dp),
+                                // Blips start at 46% of the radius, so the caption stays inside that circle.
+                                modifier = Modifier.width(radarMax * 0.44f),
                             )
                         }
                     }
@@ -164,7 +173,7 @@ fun HomeScreen(vm: RadarViewModel, ui: UiState, s: RadarSettings) {
                     Stat(summary.stale, stringResource(R.string.stale), radar.stale, Modifier.clickable { vm.onlyStale(!ui.filter.onlyStale) })
                     Stat(summary.total, stringResource(R.string.total), MaterialTheme.colorScheme.onSurface)
                 }
-                HonestyCard(ui.galaxyInstalled)
+                HonestyCard(ui.galaxyInstalled, summary.stale) { vm.startReview(auto = true) }
                 TabRow(selectedTabIndex = ui.tab.ordinal, containerColor = MaterialTheme.colorScheme.background) {
                     Tab(ui.tab == RadarTab.APPS, onClick = { vm.tab(RadarTab.APPS) }, text = { Text(stringResource(R.string.tab_apps)) })
                     Tab(ui.tab == RadarTab.UPDATES, onClick = { vm.tab(RadarTab.UPDATES) }, text = {
@@ -203,7 +212,7 @@ fun HomeScreen(vm: RadarViewModel, ui: UiState, s: RadarSettings) {
 
 /** Explains why the app cannot update others, and offers each store's "Update all" page instead of 200 single taps. */
 @Composable
-private fun HonestyCard(galaxyInstalled: Boolean) {
+private fun HonestyCard(galaxyInstalled: Boolean, stale: Int, onCheckAll: () -> Unit) {
     val context = LocalContext.current
     Card(
         Modifier.fillMaxWidth().padding(16.dp),
@@ -228,11 +237,25 @@ private fun HonestyCard(galaxyInstalled: Boolean) {
                     Text(stringResource(R.string.update_all_galaxy))
                 }
             }
+            if (stale > 0) {
+                Spacer(Modifier.height(8.dp))
+                FilledTonalButton(onClick = onCheckAll, modifier = Modifier.fillMaxWidth().height(48.dp)) {
+                    Icon(Icons.Rounded.PlayArrow, null, modifier = Modifier.size(20.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text(pluralStringResource(R.plurals.check_all, stale, stale))
+                }
+            }
             Text(
                 stringResource(if (galaxyInstalled) R.string.update_all_hint_galaxy else R.string.update_all_hint),
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(top = 10.dp),
+            )
+            Text(
+                stringResource(R.string.update_all_note),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 6.dp),
             )
         }
     }
@@ -255,7 +278,9 @@ private fun Filters(vm: RadarViewModel, ui: UiState, byStore: Map<Store, Int>) {
             Box {
                 IconButton(onClick = { sortOpen = true }) { Icon(Icons.AutoMirrored.Rounded.Sort, stringResource(R.string.sort)) }
                 DropdownMenu(sortOpen, onDismissRequest = { sortOpen = false }) {
-                    listOf(Radar.Sort.STALEST to R.string.sort_stalest, Radar.Sort.RECENT to R.string.sort_recent, Radar.Sort.NAME to R.string.sort_name).forEach { (sort, label) ->
+                    val sorts = listOf(Radar.Sort.STALEST to R.string.sort_stalest, Radar.Sort.RECENT to R.string.sort_recent, Radar.Sort.NAME to R.string.sort_name) +
+                        if (ui.usageAccess) listOf(Radar.Sort.USED to R.string.sort_used) else emptyList()
+                    sorts.forEach { (sort, label) ->
                         DropdownMenuItem(
                             text = { Text(stringResource(label), fontWeight = if (ui.sort == sort) FontWeight.Bold else null) },
                             onClick = { vm.sort(sort); sortOpen = false },
@@ -311,7 +336,8 @@ private fun AppRow(app: InstalledApp, now: Long, s: RadarSettings, vm: RadarView
             Row(verticalAlignment = Alignment.CenterVertically) {
                 StoreChip(app.store)
                 Spacer(Modifier.width(8.dp))
-                Text("v${app.versionName}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                val used = if (app.lastUsed > 0) "  ·  " + stringResource(R.string.used_ago, daysAgo(Radar.daysSince(app.lastUsed, now))) else ""
+                Text("v${app.versionName}$used", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
         }
         IconButton(onClick = { StoreLinks.openStorePage(context, app.packageName, app.store, vm.ui.value.galaxyInstalled) }) {

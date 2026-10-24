@@ -1,0 +1,6 @@
+1.1.0
+• Update all in Play Store in one tap
+• Choose the app language in Settings: 8 languages, with Arabic right-to-left
+• Ready for Android 16; works in landscape and on tablets
+• Privacy policy and open-source licences in Settings › About
+• Fewer permissions and stronger security

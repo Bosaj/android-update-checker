@@ -15,8 +15,9 @@ class RadarRepository(context: Context) {
 
     suspend fun scan(): ScanResult = withContext(Dispatchers.IO) {
         val s = settings.current()
-        val apps = scanner.scan(s.includeSystem)
         val now = System.currentTimeMillis()
+        val used = UsageAccess.lastUsed(app, now)
+        val apps = scanner.scan(s.includeSystem).map { a -> used[a.packageName]?.let { a.copy(lastUsed = it) } ?: a }
         val firstScan = !snapshot.hasBaseline()
         val changes = if (firstScan) emptyList() else Radar.changes(snapshot.lastScan(), apps, now)
         snapshot.addToFeed(changes)

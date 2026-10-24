@@ -1,0 +1,6 @@
+1.1.0
+• Alle Apps im Play Store mit einem Tippen aktualisieren
+• App-Sprache in den Einstellungen wählen: 8 Sprachen, Arabisch von rechts nach links
+• Bereit für Android 16; funktioniert im Querformat und auf Tablets
+• Datenschutzerklärung und Lizenzen unter Einstellungen › Über
+• Weniger Berechtigungen, mehr Sicherheit

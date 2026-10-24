@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Update Radar</string>
+    <string name="channel_name">Update-Erinnerungen</string>
+    <string name="channel_desc">Eine Erinnerung im WLAN, wenn Apps länger nicht aktualisiert wurden.</string>
+    <plurals name="notif_stale_title">
+        <item quantity="one">%1$d App seit %2$d+ Tagen nicht aktualisiert</item>
+        <item quantity="other">%1$d Apps seit %2$d+ Tagen nicht aktualisiert</item>
+    </plurals>
+    <plurals name="notif_updated_text">
+        <item quantity="one">%1$d App seit der letzten Prüfung aktualisiert.</item>
+        <item quantity="other">%1$d Apps seit der letzten Prüfung aktualisiert.</item>
+    </plurals>
+    <string name="notif_review_text">Tippe, um sie durchzugehen und den richtigen Store zu öffnen.</string>
+
+    <string name="store_play">Play Store</string>
+    <string name="store_galaxy">Galaxy Store</string>
+    <string name="store_amazon">Amazon Appstore</string>
+    <string name="store_huawei">AppGallery</string>
+    <string name="store_fdroid">F-Droid</string>
+    <string name="store_other">Anderer Store</string>
+    <string name="store_sideloaded">Manuell installiert</string>
+    <string name="store_preinstalled">Vorinstalliert</string>
+
+    <string name="today">heute</string>
+    <plurals name="days_ago">
+        <item quantity="one">vor %1$d Tag</item>
+        <item quantity="other">vor %1$d Tagen</item>
+    </plurals>
+    <string name="fresh">Aktuell</string>
+    <string name="aging">Älter</string>
+    <string name="stale">Veraltet</string>
+    <string name="total">Apps</string>
+    <string name="last_scan">Gescannt um %1$s</string>
+    <string name="refresh">Erneut scannen</string>
+    <string name="settings">Einstellungen</string>
+    <plurals name="review_stale">
+        <item quantity="one">%1$d veraltete App prüfen</item>
+        <item quantity="other">%1$d veraltete Apps prüfen</item>
+    </plurals>
+    <plurals name="stale_caption">
+        <item quantity="one">App seit %1$d+ Tagen nicht aktualisiert</item>
+        <item quantity="other">Apps seit %1$d+ Tagen nicht aktualisiert</item>
+    </plurals>
+    <string name="honesty">Android erlaubt keiner App, andere Apps zu aktualisieren. Update Radar findet die, die stillstehen, und öffnet den Store, der sie installiert hat – du tippst nur noch auf Aktualisieren.</string>
+    <string name="update_all_play">Alle im Play Store aktualisieren</string>
+    <string name="update_all_galaxy">Updates im Galaxy Store</string>
+    <string name="update_all_hint">Öffnet die Update-Seite des Play Store. Tippe dort auf „Alle aktualisieren“; beim Öffnen sucht der Store nach neuen Versionen.</string>
+    <string name="update_all_hint_galaxy">Der Play Store öffnet seine Update-Seite: Tippe auf „Alle aktualisieren“. Der Galaxy Store öffnet die Startseite: Menü › Updates › Alle aktualisieren.</string>
+    <string name="tab_apps">Apps</string>
+    <string name="tab_updates">Kürzlich aktualisiert</string>
+    <string name="tab_updates_count">Kürzlich aktualisiert · %1$d</string>
+    <string name="store_count">%1$s · %2$d</string>
+    <string name="empty_none">Es werden nur Apps aus einem Store oder manuell installierte Apps gezeigt, und es wurde keine gefunden. Vorinstallierte Apps sind ausgeblendet.</string>
+    <string name="empty_filter">Keine App passt zu diesen Filtern.</string>
+    <string name="empty_feed">Hier erscheinen Updates, die zwischen zwei Scans erkannt wurden. Der erste Scan ist der Ausgangspunkt.</string>
+    <string name="clear_feed">Leeren</string>
+    <string name="search_hint">Apps suchen</string>
+    <string name="sort">Sortieren</string>
+    <string name="sort_stalest">Älteste zuerst</string>
+    <string name="sort_recent">Zuletzt aktualisiert zuerst</string>
+    <string name="sort_name">Name</string>
+    <string name="all">Alle</string>
+    <string name="only_stale">Nur veraltete</string>
+    <string name="updated_ago">Aktualisiert %1$s</string>
+    <string name="open_store_for">Store-Seite von %1$s öffnen</string>
+    <string name="version">Version</string>
+    <string name="installed_from">Installiert über</string>
+    <string name="last_updated">Zuletzt aktualisiert</string>
+    <string name="first_installed">Erstmals installiert</string>
+    <string name="factory_version">Werksversion, nie aktualisiert</string>
+    <string name="factory_date">Mit dem System geliefert</string>
+    <string name="sideload_hint">Diese App stammt nicht aus einem bekannten Store und aktualisiert sich daher nicht selbst. Sieh auf ihrer Website nach oder nutze ein Tool wie Obtainium.</string>
+    <string name="open_in">In %1$s öffnen</string>
+    <string name="app_info">App-Info</string>
+    <string name="open_app">App öffnen</string>
+    <string name="ignore">Diese App ignorieren</string>
+    <string name="unignore">Nicht mehr ignorieren</string>
+
+    <string name="review_title">Veraltete Apps prüfen</string>
+    <string name="back">Zurück</string>
+    <string name="review_progress">%1$d von %2$d</string>
+    <plurals name="review_done">
+        <item quantity="one">Fertig. %1$d App geprüft.</item>
+        <item quantity="other">Fertig. %1$d Apps geprüft.</item>
+    </plurals>
+    <string name="back_to_radar">Zurück zum Radar</string>
+    <string name="open_store_page">Store-Seite öffnen</string>
+    <string name="skip">Überspringen</string>
+    <string name="done_next">Erledigt, weiter</string>
+    <string name="review_hint">Tippe im Store auf Aktualisieren und komm dann zurück. Update Radar scannt neu, sobald du zurückkehrst.</string>
+
+    <string name="thresholds">Wann ist eine App veraltet?</string>
+    <plurals name="aging_after">
+        <item quantity="one">Älter nach %1$d Tag</item>
+        <item quantity="other">Älter nach %1$d Tagen</item>
+    </plurals>
+    <plurals name="stale_after">
+        <item quantity="one">Veraltet nach %1$d Tag</item>
+        <item quantity="other">Veraltet nach %1$d Tagen</item>
+    </plurals>
+    <string name="reminders">Erinnerungen</string>
+    <string name="reminders_on">Im WLAN erinnern</string>
+    <string name="reminders_on_desc">Eine stille Prüfung im Hintergrund, nur in einem Netz ohne Volumenbegrenzung.</string>
+    <string name="every">Wie oft</string>
+    <plurals name="every_days">
+        <item quantity="one">Jeden Tag</item>
+        <item quantity="other">Alle %1$d Tage</item>
+    </plurals>
+    <string name="only_charging">Nur beim Laden</string>
+    <string name="only_charging_desc">Warten, bis das Telefon angeschlossen ist.</string>
+    <string name="apps_shown">Angezeigte Apps</string>
+    <string name="include_system">Vorinstallierte Apps einbeziehen</string>
+    <string name="include_system_desc">System-Apps mit Startsymbol zeigen, auch wenn sie nie aktualisiert wurden.</string>
+    <plurals name="ignored_count">
+        <item quantity="one">%1$d App ignoriert. Öffne sie und tippe auf Nicht mehr ignorieren, um sie zurückzuholen.</item>
+        <item quantity="other">%1$d Apps ignoriert. Öffne eine und tippe auf Nicht mehr ignorieren, um sie zurückzuholen.</item>
+    </plurals>
+    <string name="stores">Stores</string>
+    <string name="stores_desc">Öffne einen Store, um seine eigene Update-Seite zu nutzen.</string>
+    <string name="privacy">Datenschutz</string>
+    <string name="privacy_desc">Update Radar hat keine Internetberechtigung. Die Liste deiner Apps verlässt nie das Telefon.</string>
+    <string name="version_line">Version %1$s · Open Source auf GitHub (Bosaj/android-update-checker)</string>
+    <string name="language">Sprache</string>
+    <string name="language_system">Sprache des Telefons</string>
+    <string name="change">Ändern</string>
+    <string name="close">Schließen</string>
+    <string name="about">Über</string>
+    <string name="privacy_policy">Datenschutzerklärung</string>
+    <string name="licences">Open-Source-Lizenzen</string>
+    <string name="licences_intro">Update Radar ist freie Software unter der MIT-Lizenz und nutzt diese Open-Source-Bibliotheken:</string>
+    <string name="source_code">Quellcode auf GitHub</string>
+
+    <string name="onboard_tagline">Verpasse nie wieder ein App-Update.</string>
+    <string name="onboard_1_t">Sieh, was stillsteht</string>
+    <string name="onboard_1_d">Jede App mit dem Datum ihres letzten Updates, aus dem Play Store, dem Galaxy Store oder manuell installiert.</string>
+    <string name="onboard_2_t">Eine Erinnerung im WLAN</string>
+    <string name="onboard_2_d">Eine Hintergrundprüfung im WLAN meldet sich, wenn Apps seit Wochen nicht aktualisiert wurden.</string>
+    <string name="onboard_3_t">Ein Tippen zum richtigen Store</string>
+    <string name="onboard_3_d">Android erlaubt Apps nicht, andere Apps zu aktualisieren. Update Radar öffnet deshalb genau die richtige Store-Seite – du tippst auf Aktualisieren.</string>
+    <string name="onboard_4_t">Privat von Grund auf</string>
+    <string name="onboard_4_d">Keine Internetberechtigung, kein Konto, kein Tracking.</string>
+    <string name="onboard_start">Scan starten</string>
+    <plurals name="check_all">
+        <item quantity="one">%1$d App im Store prüfen</item>
+        <item quantity="other">Alle %1$d in ihren Stores prüfen</item>
+    </plurals>
+    <plurals name="review_updated">
+        <item quantity="one">Davon wurde %1$d aktualisiert.</item>
+        <item quantity="other">Davon wurden %1$d aktualisiert.</item>
+    </plurals>
+    <string name="autopilot_start">Alle automatisch prüfen</string>
+    <string name="autopilot_on">Automatische Prüfung</string>
+    <string name="autopilot_next">Als Nächstes: %1$s</string>
+    <string name="autopilot_hint">Jedes Mal, wenn du zurückkommst, öffnet sich die nächste Store-Seite von selbst. Tippe auf Aktualisieren, wenn der Store es anbietet.</string>
+    <string name="stop">Stopp</string>
+    <string name="update_all_note">„Alle aktualisieren“ aktualisiert nur Apps, für die es eine neuere Version gibt. Eine App ohne Update seit Wochen ist oft schon auf dem neuesten Stand: Mit „Alle prüfen“ siehst du jede in ihrem Store.</string>
+    <string name="used_ago">genutzt %1$s</string>
+    <string name="last_used">Zuletzt genutzt</string>
+    <string name="no_use">Keine Nutzung erfasst</string>
+    <string name="usage_title">Zuletzt-genutzt-Daten</string>
+    <string name="usage_desc">Optional. Zeigt, wann du jede App zuletzt geöffnet hast, damit du dich auf die alten Apps konzentrierst, die du wirklich nutzt. Erfordert den Nutzungsdatenzugriff von Android; die Daten bleiben auf deinem Telefon.</string>
+    <string name="usage_allow">Zugriff erlauben</string>
+    <string name="usage_on">Der Nutzungsdatenzugriff ist aktiv. Du kannst ihn jederzeit in den Android-Einstellungen ausschalten.</string>
+    <string name="open_settings">Einstellungen öffnen</string>
+    <string name="usage_disclosure_title">Nutzungsdatenzugriff erlauben?</string>
+    <string name="usage_disclosure">Update Radar liest aus Android, wann jede App zuletzt geöffnet wurde. Das wird nur genutzt, um „Zuletzt genutzt“ anzuzeigen und deine Apps zu sortieren. Nichts wird gesendet: Die App hat keine Internetberechtigung. Du kannst den Zugriff jederzeit in den Android-Einstellungen ausschalten.</string>
+    <string name="continue_btn">Weiter</string>
+    <string name="not_now">Nicht jetzt</string>
+    <string name="sort_used">Zuletzt genutzt zuerst</string>
+</resources>

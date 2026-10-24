@@ -31,7 +31,6 @@ object Reminders {
     private const val NOTIFICATION_ID = 42
 
     fun createChannel(context: Context) {
-        if (Build.VERSION.SDK_INT < 26) return
         val nm = context.getSystemService(NotificationManager::class.java)
         nm.createNotificationChannel(
             NotificationChannel(CHANNEL, context.getString(R.string.channel_name), NotificationManager.IMPORTANCE_DEFAULT).apply {

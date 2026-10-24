@@ -16,6 +16,7 @@ import ma.bosaj.updateradar.data.Radar
 import ma.bosaj.updateradar.data.RadarRepository
 import ma.bosaj.updateradar.data.RadarSettings
 import ma.bosaj.updateradar.data.Store
+import ma.bosaj.updateradar.data.UsageAccess
 import ma.bosaj.updateradar.work.Reminders
 
 enum class Screen { HOME, REVIEW, SETTINGS }
@@ -35,6 +36,13 @@ data class UiState(
     val reviewQueue: List<String> = emptyList(),
     val reviewIndex: Int = 0,
     val reviewDone: Set<String> = emptySet(),
+    /** When the review started; apps whose last update is newer were updated during it. */
+    val reviewStartedAt: Long = 0L,
+    /** "Check them all": each return from the store opens the next app's store page by itself. */
+    val autoPilot: Boolean = false,
+    /** A store page was opened by the autopilot and we wait for the user to come back. */
+    val awaitingReturn: Boolean = false,
+    val usageAccess: Boolean = false,
 )
 
 class RadarViewModel(app: Application) : AndroidViewModel(app) {
@@ -56,6 +64,7 @@ class RadarViewModel(app: Application) : AndroidViewModel(app) {
                 apps = r.apps,
                 feed = repo.feed(),
                 galaxyInstalled = repo.galaxyStoreInstalled(),
+                usageAccess = UsageAccess.granted(getApplication()),
                 lastChanges = r.newChanges.size,
                 selected = it.selected?.let { s -> r.apps.firstOrNull { a -> a.packageName == s.packageName } },
             )
@@ -78,20 +87,47 @@ class RadarViewModel(app: Application) : AndroidViewModel(app) {
         _ui.update { it.copy(feed = emptyList(), lastChanges = 0) }
     }
 
-    /** Start reviewing the stale apps, stalest first. */
-    fun startReview() {
+    /** Start reviewing the stale apps, stalest first; [auto] starts "Check them all" at once. */
+    fun startReview(auto: Boolean = false) {
         val s = settings.value
         val now = System.currentTimeMillis()
         val queue = Radar.apply(_ui.value.apps, Radar.Filter(onlyStale = true), Radar.Sort.STALEST, now, s.agingAfterDays, s.staleAfterDays, s.ignored)
             .map { it.packageName }
-        _ui.update { it.copy(screen = Screen.REVIEW, reviewQueue = queue, reviewIndex = 0, reviewDone = emptySet()) }
+        _ui.update {
+            it.copy(
+                screen = Screen.REVIEW, reviewQueue = queue, reviewIndex = 0, reviewDone = emptySet(),
+                reviewStartedAt = now, autoPilot = auto && queue.isNotEmpty(), awaitingReturn = false,
+            )
+        }
+    }
+
+    fun startAutoPilot() = _ui.update { it.copy(autoPilot = it.reviewIndex < it.reviewQueue.size, awaitingReturn = false) }
+
+    fun stopAutoPilot() = _ui.update { it.copy(autoPilot = false, awaitingReturn = false) }
+
+    /** The autopilot opened the current app's store page. */
+    fun storeOpened() = _ui.update { it.copy(awaitingReturn = true) }
+
+    /** Back from the store: count the app as checked and let the autopilot open the next one. */
+    fun returnedFromStore() = _ui.update {
+        if (!it.autoPilot || !it.awaitingReturn) return@update it
+        val pkg = it.reviewQueue.getOrNull(it.reviewIndex)
+        val next = (it.reviewIndex + 1).coerceAtMost(it.reviewQueue.size)
+        it.copy(
+            reviewIndex = next,
+            reviewDone = if (pkg != null) it.reviewDone + pkg else it.reviewDone,
+            awaitingReturn = false,
+            autoPilot = next < it.reviewQueue.size,
+        )
     }
 
     fun reviewNext(markDone: Boolean) = _ui.update {
         val pkg = it.reviewQueue.getOrNull(it.reviewIndex)
+        val next = (it.reviewIndex + 1).coerceAtMost(it.reviewQueue.size)
         it.copy(
-            reviewIndex = (it.reviewIndex + 1).coerceAtMost(it.reviewQueue.size),
+            reviewIndex = next,
             reviewDone = if (markDone && pkg != null) it.reviewDone + pkg else it.reviewDone,
+            autoPilot = it.autoPilot && next < it.reviewQueue.size,
         )
     }
 

@@ -1,0 +1,6 @@
+1.1.0
+• Aggiorna tutto nel Play Store con un tocco
+• Scegli la lingua dell’app nelle impostazioni: 8 lingue, arabo da destra a sinistra
+• Pronta per Android 16; funziona in orizzontale e sui tablet
+• Informativa privacy e licenze in Impostazioni › Informazioni
+• Meno permessi, più sicurezza
