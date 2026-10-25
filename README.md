@@ -7,7 +7,7 @@
 [![Latest release](https://img.shields.io/github/v/release/Bosaj/android-update-checker?sort=semver)](https://github.com/Bosaj/android-update-checker/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-**Status:** v1.2.0 · **Download:** [latest APK](https://github.com/Bosaj/android-update-checker/releases/latest) · **Android:** 8.0+ (targets Android 16, API 36) · **Idea:** #20 in the owner's ideas backlog · **Author:** Oussama EL HADJI
+**Status:** v1.2.0 · **Download:** [latest APK](https://github.com/Bosaj/android-update-checker/releases/latest) · **Android:** 8.0+ (targets Android 16, API 36) · **Idea:** #20 in the owner's ideas backlog · **Author:** Oussama Elhadji (`@Bosaj`) <oussousselhadji@gmail.com>.
 
 <p align="center">
   <img src="docs/home.png" width="190" alt="Radar home screen" />
@@ -124,6 +124,7 @@ Kotlin 2.2, AGP 8.13, Gradle 8.14, Jetpack Compose (BOM 2025.12), AppCompat per-
 - Put logic in `Radar.kt` (pure Kotlin) and test it; keep Android calls in the scanner, usage access and links.
 - New user-visible text goes into all 8 `values*/strings.xml` files.
 
-## License
+## 📄 License
+**Proprietary & Commercial Software License** — All Rights Reserved © 2026 Oussama Elhadji (`@Bosaj`) <[oussousselhadji@gmail.com](mailto:oussousselhadji@gmail.com)>.
 
-[MIT](LICENSE) — © 2026 Oussama EL HADJI
+Unauthorized copying, distribution, resale, or reverse engineering is strictly prohibited. See [LICENSE](LICENSE) for full legal terms.
